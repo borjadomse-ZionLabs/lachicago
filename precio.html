@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Chicago · Precio</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="icon" href="favicon-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.w{max-width:1100px;margin:0 auto;padding:0 var(--pad)}
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);border-bottom:1px solid var(--line)}
+.top img{width:40px}
+.top .nav__logo{gap:10px}
+.hero{padding:clamp(60px,9vw,120px) 0 clamp(40px,6vw,70px)}
+.hero h1{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(60px,11vw,160px);line-height:.86;margin:14px 0 18px}
+.hero h1 span{color:var(--blue-2)}
+.hero p{font-size:clamp(17px,1.6vw,22px);color:rgba(255,255,255,.78);max-width:42ch;margin:0}
+.items{display:grid;gap:12px}
+.it{display:grid;grid-template-columns:1fr auto;gap:6px 24px;align-items:center;background:var(--ink-2);border:1px solid var(--line);border-radius:20px;padding:26px 28px}
+.it h3{margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(28px,3vw,42px);line-height:1}
+.it p{margin:0;color:rgba(255,255,255,.72);font-size:15px;grid-column:1}
+.it .pr{grid-row:1/3;grid-column:2;text-align:right;font-family:var(--f-display);font-size:clamp(40px,5vw,64px);line-height:1}
+.it .pr small{display:block;font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.08em;margin-top:6px}
+.it .pr s{color:var(--muted)}
+.gift{display:inline-block;margin-top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--blue);color:#fff;padding:6px 10px;border-radius:99px}
+.total{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 28px;color:var(--muted);font-family:var(--f-mono);font-size:14px;letter-spacing:.04em}
+.total b{color:#fff;font-weight:500}
+.offer{margin-top:clamp(50px,7vw,80px);border-radius:26px;background:var(--blue);padding:clamp(28px,4vw,50px);position:relative;overflow:hidden}
+.offer::after{content:"";position:absolute;right:-50px;bottom:-50px;width:280px;height:240px;background:url(img/logo-bull.png) center/contain no-repeat;opacity:.14}
+.offer small{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.offer h2{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(44px,7vw,96px);line-height:.88;margin:12px 0 24px}
+.offer .big{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.offer .big b{font-family:var(--f-display);font-weight:400;font-size:clamp(80px,13vw,170px);line-height:.82}
+.offer .big s{font-family:var(--f-mono);font-size:18px;color:rgba(255,255,255,.65);margin-bottom:12px}
+.offer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;position:relative;z-index:1}
+.offer li{display:flex;gap:12px;font-size:clamp(16px,1.5vw,19px);font-weight:500}
+.offer li::before{content:"✓";font-weight:700}
+.offer .after{margin-top:24px;font-size:15px;color:rgba(255,255,255,.85);position:relative;z-index:1}
+.persp{margin-top:clamp(60px,8vw,100px)}
+.persp h2{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(44px,7vw,96px);line-height:.88;margin:0 0 26px}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pc{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(24px,3vw,36px)}
+.pc .n{font-family:var(--f-display);font-size:clamp(56px,7vw,96px);line-height:.9}
+.pc .eq{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:10px 0 8px}
+.pc p{margin:0;font-size:17px;color:rgba(10,11,15,.8)}
+.ben{margin-top:clamp(60px,8vw,100px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.ben div{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--ink-2)}
+.ben b{display:block;font-size:18px;margin-bottom:6px}
+.ben p{margin:0;font-size:14px;color:rgba(255,255,255,.72)}
+.end{text-align:center;padding:clamp(70px,10vw,130px) var(--pad)}
+.end h2{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(56px,10vw,150px);line-height:.85;margin:0 0 18px}
+.end p{color:var(--muted);margin:0}
+@media(max-width:700px){.it{grid-template-columns:1fr}.it .pr{grid-row:auto;grid-column:1;text-align:left}.pg{grid-template-columns:1fr}.total{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<header class="top">
+  <span class="nav__logo"><img src="img/logo-bull-sm.png" alt=""><span>LA CHICAGO</span></span>
+  <span class="label" style="margin:0"><span>✦</span> Vilanova · Sitges</span>
+</header>
+
+<main class="w">
+  <section class="hero">
+    <p class="label"><span>(01)</span> Tu inversión</p>
+    <h1>Web + <span>El Mando</span></h1>
+    <p>Tu escaparate, tus reservas en tu Google Calendar sin comisiones y el control de tus dos barberías desde el móvil.</p>
+  </section>
+
+  <section class="items">
+    <div class="it">
+      <h3>Web La Chicago</h3>
+      <p>Escaparate de alta gama para Vilanova y Sitges, reservas online 24/7 directas a tu Google Calendar, cero comisiones por reserva.</p>
+      <div class="pr">790 €<small>pago único</small></div>
+    </div>
+    <div class="it">
+      <h3>El Mando · instalación</h3>
+      <p>Tus dos barberías desde el móvil: agenda, huecos libres, lo que entra cada día y accesos para dueño, encargados y barberos.</p>
+      <div class="pr">200 €<small>pago único</small></div>
+    </div>
+    <div class="it">
+      <h3>Mantenimiento</h3>
+      <p>El Mando y la web siempre funcionando: altas y bajas del equipo, cambios de precios, fotos y horarios, soporte por WhatsApp.</p>
+      <div class="pr">99 €<small>al mes</small></div>
+    </div>
+  </section>
+  <div class="total"><span>Total</span><span><b>990 €</b> + <b>99 €/mes</b></span></div>
+
+  <section class="offer">
+    <small>Si lo cerramos hoy</small>
+    <h2>Oferta de hoy</h2>
+    <div class="big"><b>790 €</b><s>990 €</s></div>
+    <ul>
+      <li>Web La Chicago completa</li>
+      <li>Instalación de El Mando de regalo (200 €)</li>
+      <li>Primer mes de mantenimiento gratis</li>
+    </ul>
+    <p class="after">Después, 99 € al mes con todo incluido.</p>
+  </section>
+
+  <section class="persp">
+    <p class="label"><span>(02)</span> En perspectiva</p>
+    <h2>Se recupera<br>en días.</h2>
+    <div class="pg">
+      <div class="pc"><div class="n">790 €</div><div class="eq">≈ un día de las dos barberías</div><p>Lo que pueden llegar a facturar en un solo día entre Vilanova y Sitges. Pagas una vez y es tuya.</p></div>
+      <div class="pc"><div class="n">99 €/mes</div><div class="eq">menos de un día de una barbería</div><p>Al mes. Ni un día de trabajo de una de tus barberías, por tenerlo todo funcionando y bajo control.</p></div>
+    </div>
+  </section>
+
+  <section class="ben">
+    <div><b>Cero comisiones</b><p>Cada reserva es tuya. Sin pagar por cliente a ninguna plataforma.</p></div>
+    <div><b>Reservas 24/7</b><p>Tus clientes reservan a cualquier hora, sin llamar ni esperar respuesta.</p></div>
+    <div><b>Todo en tu Google Calendar</b><p>Web, teléfono o boca a boca: todo en un sitio y sin dobles reservas.</p></div>
+    <div><b>Control desde casa</b><p>Con El Mando ves las dos sedes, los huecos libres y lo que entra cada día.</p></div>
+  </section>
+</main>
+
+<section class="end">
+  <img src="img/logo-bull.png" alt="" style="width:120px;margin:0 auto 24px">
+  <h2>¿Empezamos?</h2>
+  <p>Precios sin IVA.</p>
+</section>
+</body>
+</html>
