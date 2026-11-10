@@ -125,7 +125,7 @@
 .pack__save { display: inline-flex; align-self: flex-start; background: var(--blue); padding: 8px 14px; border-radius: 99px; font-weight: 700; font-size: 14px; }
 
 /* mantenimiento */
-.mt { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.mt { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
 .mt__c { border-radius: 22px; border: 1px solid var(--line); background: var(--ink-2); padding: clamp(24px, 3vw, 38px); display: flex; flex-direction: column; gap: 16px; }
 .mt__c--hi { border-color: var(--blue-2); background: linear-gradient(180deg, rgba(31,75,255,.18), var(--ink-2)); }
 .mt__c small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-2); }
@@ -321,20 +321,28 @@ html:not(.js) .rv { opacity: 1; transform: none; }
 <!-- MANTENIMIENTO -->
 <section class="p-sec">
   <div class="p-wrap">
-    <p class="label"><span>(07)</span> Después del lanzamiento</p>
-    <h2 class="p-h2 rv">Tú a lo tuyo.<br>Nosotros a la web.</h2>
+    <p class="label"><span>(07)</span> Panel de control</p>
+    <h2 class="p-h2 rv">Tus dos barberías,<br>en tu bolsillo.</h2>
+    <p class="p-lead rv">La web es el escaparate. El panel es el control: ves cada sede, cada agenda y lo que entra cada día, estés donde estés. Tú a lo tuyo; nosotros nos encargamos de que todo funcione.</p>
     <div class="mt">
       <div class="mt__c rv">
-        <small>Por web</small>
+        <small>Solo web</small>
         <b><span id="mtOne"></span><em>/ mes</em></b>
-        <ul><li>Hosting rápido y certificado de seguridad</li><li>Copias de seguridad</li><li>Cambios de precios, fotos y fechas</li><li>Soporte directo por WhatsApp</li></ul>
+        <ul><li>Hosting, dominio y seguridad</li><li>Reservas a tu Google Calendar</li><li>Cambios de precios, fotos y horarios</li><li>Soporte por WhatsApp</li></ul>
       </div>
-      <div class="mt__c mt__c--hi rv">
-        <small>Todo el universo</small>
+      <div class="mt__c mt__c--hi rv" style="position:relative">
+        <span class="cmp__tag">Recomendado</span>
+        <small>Web + Panel de control</small>
+        <b><span id="mtPanel"></span><em>/ mes</em></b>
+        <ul><li>Todo lo de "Solo web"</li><li>Panel con las 2 sedes desde el móvil</li><li>Ingresos previstos, ocupación y lo más pedido</li><li>Accesos para dueño, encargados y barberos</li><li>Altas y bajas del equipo en 24 h</li><li>Informe mensual de reservas</li></ul>
+      </div>
+      <div class="mt__c rv">
+        <small>Universo Chicago · 5 webs</small>
         <b><span id="mtAll"></span><em>/ mes</em></b>
-        <ul><li>Todo lo anterior para las 5 webs</li><li>Nuevas fechas de Sesión Chicago en 24 h</li><li>Contenido nuevo con tus reels cada mes</li><li>Informe mensual de reservas y visitas</li></ul>
+        <ul><li>Panel de control para La Chicago</li><li>Mantenimiento de las 5 webs</li><li>Nuevas fechas de Sesión Chicago en 24 h</li><li>Contenido nuevo con tus reels cada mes</li></ul>
       </div>
     </div>
+    <p class="vt-note rv" style="color:var(--muted);margin-top:22px">Pago anual: 2 meses gratis.</p>
   </div>
 </section>
 
@@ -391,7 +399,8 @@ const P = {
   ],
   precioPack: 9900,
   mantenimientoWeb: 49,
-  mantenimientoTodo: 149,
+  mantenimientoPanel: 149,
+  mantenimientoTodo: 299,
   roiCitasDia: 2, roiPrecioCita: 20, roiDias: 24
 };
 /* ================================== */
@@ -410,7 +419,7 @@ $('#packList').innerHTML = items.map(([n, p]) => `<div class="pack__row"><span>$
   `<div class="pack__row pack__row--v"><span>Valor de mercado total</span><span>${eur(sumValor)}</span></div><div class="pack__row pack__row--t"><span>Por separado</span><span>${eur(sumPrecio)}</span></div>`;
 $('#packPrice').textContent = eur(P.precioPack);
 $('#packSave').textContent = `Ahorras ${eur(sumPrecio - P.precioPack)} frente a contratarlas por separado`;
-$('#mtOne').textContent = P.mantenimientoWeb + ' €'; $('#mtAll').textContent = P.mantenimientoTodo + ' €';
+$('#mtOne').textContent = P.mantenimientoWeb + ' €'; $('#mtPanel').textContent = P.mantenimientoPanel + ' €'; $('#mtAll').textContent = P.mantenimientoTodo + ' €';
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
