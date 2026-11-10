@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Chicago — Barbería de los artistas · Vilanova & Sitges</title>
+<meta name="description" content="La Chicago: barbería y peluquería unisex de alta gama en Vilanova i la Geltrú y Sitges. Fades, trenzas, balayage y barba a cuchilla. Reserva tu cita online.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0b0f">
+<meta property="og:title" content="La Chicago — La barbería de los artistas">
+<meta property="og:description" content="Vilanova i la Geltrú · Sitges. Barbería & peluquería unisex de alta gama. Reserva online.">
+<meta property="og:image" content="https://borjadomse-zionlabs.github.io/lachicago/og.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://borjadomse-zionlabs.github.io/lachicago/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon-64.png" type="image/png">
+<link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/poster-hero.webp">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <img class="loader__mark" src="img/logo-bull-sm.png" alt="">
+    <div class="loader__word"><span>L</span><span>A</span><span>&nbsp;</span><span>C</span><span>H</span><span>I</span><span>C</span><span>A</span><span>G</span><span>O</span></div>
+    <div class="loader__meta"><span>Vilanova</span><span class="loader__count" id="loaderCount">000</span><span>Sitges</span></div>
+  </div>
+  <div class="loader__curtain"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="horns" viewBox="0 0 120 60"><path fill="currentColor" d="M8 4c-6 18 2 34 22 38 6 1 12 4 16 9l4 5 4-6c3-4 6-6 6-6s3 2 6 6l4 6 4-5c4-5 10-8 16-9 20-4 28-20 22-38-4 14-14 22-28 23-8 1-15 4-20 9l-4 4-4-4c-5-5-12-8-20-9C22 26 12 18 8 4Z"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 12h15M13 5l7 7-7 7"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M7 2.8h10A4.2 4.2 0 0 1 21.2 7v10a4.2 4.2 0 0 1-4.2 4.2H7A4.2 4.2 0 0 1 2.8 17V7A4.2 4.2 0 0 1 7 2.8Z"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.6 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8Z"/></symbol>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__logo" aria-label="La Chicago, inicio">
+    <img src="img/logo-bull-sm.png" alt="" width="40" height="35">
+    <span>LA CHICAGO</span>
+  </a>
+  <nav class="nav__links" aria-label="Principal">
+    <a href="#casas">Las casas</a>
+    <a href="#artistas">Artistas</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#fundador">Fundador</a>
+    <a href="#universo">Universo</a>
+  </nav>
+  <div class="nav__right">
+    <span class="status" id="status"><i></i><span id="statusTxt">Lun–Sáb · 10:00–20:00</span></span>
+    <button class="btn btn--blue btn--sm magnetic" data-book>Reservar</button>
+    <button class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links">
+    <a href="#casas"><small>01</small>Las casas</a>
+    <a href="#artistas"><small>02</small>Artistas</a>
+    <a href="#servicios"><small>03</small>Servicios</a>
+    <a href="#fundador"><small>04</small>Fundador</a>
+    <a href="#universo"><small>05</small>Universo</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="https://instagram.com/chicago_vilanova" target="_blank" rel="noopener">@chicago_vilanova</a>
+    <a href="https://instagram.com/chicago_sitges" target="_blank" rel="noopener">@chicago_sitges</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <video class="hero__video" id="heroVideo" src="video/hero.mp4" poster="img/poster-hero.webp" muted playsinline loop autoplay preload="auto"></video>
+    <div class="hero__shade"></div>
+  </div>
+
+  <div class="hero__top">
+    <p class="eyebrow">Barbería &amp; peluquería unisex<br>de alta gama</p>
+    <p class="eyebrow eyebrow--r">Vilanova i la Geltrú<br>Sitges — Barcelona</p>
+  </div>
+
+  <h1 class="hero__title" aria-label="La Chicago">
+    <span class="hero__line"><span class="split-chars">LA</span></span>
+    <span class="hero__line hero__line--big"><span class="split-chars">CHICAGO</span></span>
+  </h1>
+
+  <div class="hero__bottom">
+    <p class="hero__claim"><em>La barbería</em> de los artistas.</p>
+    <div class="hero__ctas">
+      <button class="btn btn--blue magnetic" data-book data-cursor="Reservar">Reservar cita <svg><use href="#arrow"/></svg></button>
+      <a href="#casas" class="btn btn--ghost magnetic">Ver las dos casas</a>
+    </div>
+  </div>
+
+  <div class="marquee hero__marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Llega con estilo</span><i>✦</i><span>Sale con respeto</span><i>✦</i><span>Skin fades</span><i>✦</i><span>Trenzas</span><i>✦</i><span>Balayage</span><i>✦</i><span>Barba a cuchilla</span><i>✦</i><span>Servicio a domicilio</span><i>✦</i>
+      <span>Llega con estilo</span><i>✦</i><span>Sale con respeto</span><i>✦</i><span>Skin fades</span><i>✦</i><span>Trenzas</span><i>✦</i><span>Balayage</span><i>✦</i><span>Barba a cuchilla</span><i>✦</i><span>Servicio a domicilio</span><i>✦</i>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- ============ MANIFIESTO ============ -->
+<section class="manifesto" id="manifesto">
+  <p class="label"><span>(01)</span> Manifiesto</p>
+  <h2 class="manifesto__text reveal-words">No seguimos tendencias. <em>Marcamos la diferencia.</em></h2>
+  <div class="manifesto__grid">
+    <p class="manifesto__p fade-up">Dos casas en la costa del Garraf y un mismo código: precisión, trato y estilo de alta gama. Por nuestras sillas han pasado artistas que llenan estadios — y el cliente de toda la vida recibe exactamente el mismo respeto.</p>
+    <ul class="stats">
+      <li class="fade-up"><b data-count="2">2</b><span>casas · Vilanova &amp; Sitges</span></li>
+      <li class="fade-up"><b><span data-count="350">350</span>+</b><span>reseñas de clientes</span></li>
+      <li class="fade-up"><b><span data-count="4.9" data-dec="1">4,9</span><svg><use href="#star"/></svg></b><span>valoración en Sitges</span></li>
+      <li class="fade-up"><b>6<small>/7</small></b><span>días abiertos · 10–20h</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ LAS CASAS ============ -->
+<section class="casas" id="casas">
+  <div class="section-head">
+    <p class="label"><span>(02)</span> Las casas</p>
+    <h2 class="h-display split-lines">Una firma.<br>Dos direcciones.</h2>
+  </div>
+
+  <div class="casas__panels">
+    <article class="casa" data-sede="vilanova" data-cursor="Ver">
+      <div class="casa__media">
+        <img src="img/vng-facade.webp" alt="Fachada de La Chicago en Vilanova i la Geltrú con un Mercedes G aparcado" loading="lazy">
+        <video data-src="video/vilanova.mp4" muted playsinline loop preload="none"></video>
+      </div>
+      <div class="casa__body">
+        <span class="casa__num">01</span>
+        <h3 class="casa__city">Vilanova</h3>
+        <p class="casa__name">La Chicago — <em>la barbería de los alta gama</em></p>
+        <ul class="casa__tags"><li>Fades</li><li>Barba</li><li>Trenzas</li><li>Facial</li><li>A domicilio</li></ul>
+        <div class="casa__info">
+          <p>Carrer de Joan Maragall, 27<br>08800 Vilanova i la Geltrú</p>
+          <p><a href="tel:+34931971532">931 97 15 32</a><br>Lun–Sáb · 10:00–20:00</p>
+        </div>
+        <div class="casa__ctas">
+          <button class="btn btn--blue" data-book="vilanova">Reservar en Vilanova</button>
+          <a class="btn btn--line" href="https://www.google.com/maps/place/Chicago+Barber+Shop/@41.2197687,1.723365,17z/data=!4m6!3m5!1s0x12a386fae7b99ffd:0x5dd889b69cb3510f!8m2!3d41.2197687!4d1.723365" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="casa" data-sede="sitges" data-cursor="Ver">
+      <div class="casa__media">
+        <img src="img/stg-mclaren.webp" alt="McLaren morado frente a La Chicago 2.0 en Sitges" loading="lazy">
+        <video data-src="video/sitges.mp4" muted playsinline loop preload="none"></video>
+      </div>
+      <div class="casa__body">
+        <span class="casa__num">02</span>
+        <h3 class="casa__city">Sitges</h3>
+        <p class="casa__name">La Chicago 2.0 — <em>barbería unisex</em></p>
+        <ul class="casa__tags"><li>Peluquería mujer</li><li>Balayage</li><li>Keratina</li><li>Trenzas</li><li>Novias</li></ul>
+        <div class="casa__info">
+          <p>Carrer de Sant Josep, 36<br>08870 Sitges</p>
+          <p><span class="rating"><svg><use href="#star"/></svg> 4,9 · 118 reseñas</span><br>Lun–Sáb · 10:00–20:00</p>
+        </div>
+        <div class="casa__ctas">
+          <button class="btn btn--blue" data-book="sitges">Reservar en Sitges</button>
+          <a class="btn btn--line" href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Sant+Josep+36+08870+Sitges" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ARTISTAS ============ -->
+<section class="artistas" id="artistas">
+  <div class="artistas__pin">
+    <div class="artistas__head">
+      <p class="label label--dark"><span>(03)</span> Wall of fame</p>
+      <h2 class="artistas__title">Por esta silla<br>han pasado</h2>
+      <p class="artistas__sub">La barbería de referencia de la música urbana cuando pasa por Cataluña. Mismo trato, misma cuchilla.</p>
+    </div>
+    <div class="artistas__track" id="artTrack">
+      <figure class="art art--poster"><img src="img/p-dalvin.webp" alt="Dalvin La Melodía en La Chicago"><figcaption><b>Dalvin La Melodía</b><span>Estilismo oficial de su gira 2026</span></figcaption></figure>
+      <figure class="art art--poster"><img src="img/p-chimbala.webp" alt="Chimbala en La Chicago"><figcaption><b>Chimbala</b><span>Cliente frecuente de la casa</span></figcaption></figure>
+      <figure class="art art--poster"><img src="img/p-amenazzy.webp" alt="Amenazzy con el equipo de La Chicago 2.0"><figcaption><b>Amenazzy</b><span>Team sangriento 🇩🇴</span></figcaption></figure>
+      <figure class="art art--poster"><img src="img/p-paramba.webp" alt="Paramba en La Chicago"><figcaption><b>Paramba</b><span>In the house</span></figcaption></figure>
+      <figure class="art art--poster"><img src="img/p-djpatio.webp" alt="DJ Patio en La Chicago"><figcaption><b>DJ Patio</b><span>En la casa</span></figcaption></figure>
+      <figure class="art art--poster"><img src="img/p-adonis.webp" alt="Adonis en La Chicago"><figcaption><b>Adonis</b><span>Fresh cut</span></figcaption></figure>
+      <div class="art art--video">
+        <video data-src="video/dalvin.mp4" poster="img/poster-dalvin.webp" muted playsinline loop preload="none"></video>
+        <blockquote>“Gracias, Dalvin y su staff, por confiar en nuestro trabajo y dejar que seamos la barbería encargada de su estilismo en su gira 2026.”</blockquote>
+      </div>
+    </div>
+  </div>
+  <div class="artistas__names" aria-hidden="true"><span>DALVIN · CHIMBALA · AMENAZZY · PARAMBA · DJ PATIO ·&nbsp;</span></div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="servicios" id="servicios">
+  <div class="section-head section-head--dark">
+    <p class="label label--dark"><span>(04)</span> Servicios</p>
+    <h2 class="h-display h-display--dark split-lines">La carta.</h2>
+    <p class="servicios__intro fade-up">Precios desde. Los servicios técnicos de color y trenzas se presupuestan en sala según largo y técnica.</p>
+  </div>
+  <div class="tabs" role="tablist" id="svcTabs"></div>
+  <ul class="svc-list" id="svcList"></ul>
+  <div class="svc-hover" id="svcHover" aria-hidden="true"><img alt=""></div>
+  <div class="servicios__cta fade-up">
+    <p>¿Lo tienes claro? <em>Tu silla te espera.</em></p>
+    <button class="btn btn--blue btn--lg magnetic" data-book>Reservar ahora <svg><use href="#arrow"/></svg></button>
+  </div>
+</section>
+
+<!-- ============ EL TRABAJO / GALERIA ============ -->
+<section class="trabajo" id="trabajo">
+  <div class="section-head">
+    <p class="label"><span>(05)</span> El trabajo</p>
+    <h2 class="h-display split-lines">Hecho a cuchilla.</h2>
+  </div>
+  <div class="trabajo__grid">
+    <figure class="g g1" data-speed="-0.06"><img src="img/fade-4.webp" alt="Skin fade perfilado a cuchilla" loading="lazy"></figure>
+    <figure class="g g2" data-speed="0.08"><img src="img/braids-1.webp" alt="Trenzas en proceso" loading="lazy"></figure>
+    <figure class="g g3 g--video" data-speed="-0.03"><video data-src="video/trenzas.mp4" poster="img/poster-trenzas.webp" muted playsinline loop preload="none"></video><figcaption>Trenzas · La Chicago 2.0</figcaption></figure>
+    <figure class="g g4" data-speed="0.1"><img src="img/curly.webp" alt="Corte rizado con fade" loading="lazy"></figure>
+    <figure class="g g5" data-speed="-0.08"><img src="img/braids-6.webp" alt="Trenzista de La Chicago trabajando con un cliente" loading="lazy"></figure>
+    <figure class="g g6 g--video" data-speed="0.05"><video data-src="video/balayage.mp4" poster="img/poster-balayage.webp" muted playsinline loop preload="none"></video><figcaption>Balayage · Sitges</figcaption></figure>
+    <figure class="g g7" data-speed="-0.05"><img src="img/braids-2.webp" alt="Resultado de trenzas frente al logo de La Chicago 2.0" loading="lazy"></figure>
+    <figure class="g g8" data-speed="0.07"><img src="img/fade-3.webp" alt="Fade con diseño de línea" loading="lazy"></figure>
+    <figure class="g g9" data-speed="-0.04"><img src="img/vng-back.webp" alt="Barbero de La Chicago con camiseta del equipo" loading="lazy"></figure>
+    <figure class="g g10" data-speed="0.06"><img src="img/stg-flowers.webp" alt="Secado con brushing junto al muro de flores en Sitges" loading="lazy"></figure>
+  </div>
+  <div class="marquee marquee--outline" aria-hidden="true">
+    <div class="marquee__track marquee__track--slow">
+      <span>Skin fade</span><i>✦</i><span>Box braids</span><i>✦</i><span>Cornrows</span><i>✦</i><span>Balayage</span><i>✦</i><span>Keratina</span><i>✦</i><span>Barba a cuchilla</span><i>✦</i>
+      <span>Skin fade</span><i>✦</i><span>Box braids</span><i>✦</i><span>Cornrows</span><i>✦</i><span>Balayage</span><i>✦</i><span>Keratina</span><i>✦</i><span>Barba a cuchilla</span><i>✦</i>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNDADOR ============ -->
+<section class="fundador" id="fundador">
+  <div class="fundador__grid">
+    <div class="fundador__portrait">
+      <div class="fundador__img" data-speed="-0.05"><img src="img/charls-1.webp" alt="Charls Albert, fundador de La Chicago" loading="lazy"></div>
+      <span class="fundador__tag">Fundador &amp; CEO</span>
+    </div>
+    <div class="fundador__copy">
+      <p class="label label--dark"><span>(06)</span> El fundador</p>
+      <h2 class="fundador__name"><span class="split-chars">CHARLS</span><br><span class="split-chars">ALBERT</span></h2>
+      <p class="fundador__quote reveal-words">“Nunca es suerte, <em>siempre es Dios.”</em></p>
+      <p class="fundador__p fade-up">Dominicano y emprendedor, Charls levantó La Chicago en Vilanova con una idea simple: que cada cliente reciba el trato que reciben los artistas. Hoy esa idea tiene dos casas, una noche propia —Sesión Chicago—, un rancho familiar en San Cristóbal, República Dominicana, y una productora audiovisual en camino.</p>
+      <div class="fundador__sign fade-up">
+        <span>Lujo, disciplina<br>y cero explicaciones.</span>
+        <a class="btn btn--dark magnetic" href="https://instagram.com/charlsalbert_" target="_blank" rel="noopener"><svg><use href="#ig"/></svg> @charlsalbert_</a>
+      </div>
+    </div>
+  </div>
+  <div class="film" aria-hidden="true">
+    <div class="film__track" id="filmTrack">
+      <img src="img/charls-3.webp" alt="" loading="lazy"><img src="img/charls-4.webp" alt="" loading="lazy"><img src="img/charls-5.webp" alt="" loading="lazy"><img src="img/charls-2.webp" alt="" loading="lazy"><img src="img/charls-6.webp" alt="" loading="lazy"><img src="img/charls-8.webp" alt="" loading="lazy"><img src="img/charls-7.webp" alt="" loading="lazy"><img src="img/charls-9.webp" alt="" loading="lazy"><img src="img/charls-10.webp" alt="" loading="lazy">
+    </div>
+  </div>
+  <div class="quotes" aria-hidden="true">
+    <div class="quotes__track">
+      <span>No es la flecha, es el indio</span><i>✦</i><span>Crea fama y échate a dormir</span><i>✦</i><span>Lo que hoy no tengo, mañana lo consigo</span><i>✦</i><span>El estilo habla antes que yo</span><i>✦</i>
+      <span>No es la flecha, es el indio</span><i>✦</i><span>Crea fama y échate a dormir</span><i>✦</i><span>Lo que hoy no tengo, mañana lo consigo</span><i>✦</i><span>El estilo habla antes que yo</span><i>✦</i>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVA CTA ============ -->
+<section class="cta" id="reservar">
+  <div class="cta__bg"><img src="img/vng-interior.webp" alt="" loading="lazy" data-speed="-0.1"></div>
+  <div class="cta__inner">
+    <p class="label"><span>(07)</span> Reserva online · 24/7</p>
+    <h2 class="cta__title split-lines">Tu silla<br>te espera.</h2>
+    <p class="cta__p fade-up">Elige casa, servicio y hora en menos de un minuto. Sin llamadas, sin esperas, sin comisiones.</p>
+    <div class="cta__btns fade-up">
+      <button class="btn btn--white btn--lg magnetic" data-book="vilanova">Vilanova <svg><use href="#arrow"/></svg></button>
+      <button class="btn btn--white btn--lg magnetic" data-book="sitges">Sitges <svg><use href="#arrow"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UNIVERSO ============ -->
+<section class="universo" id="universo">
+  <div class="section-head">
+    <p class="label"><span>(08)</span> El universo Chicago</p>
+    <h2 class="h-display split-lines">Más allá<br>de la silla.</h2>
+    <p class="universo__intro fade-up">Las otras casas de Charls Albert. Mismo apellido, mismo nivel.</p>
+  </div>
+
+  <div class="uni">
+    <article class="uni__card uni__card--sesion" data-cursor="Instagram">
+      <a class="uni__link" href="https://instagram.com/sesionchicago" target="_blank" rel="noopener" aria-label="Sesión Chicago en Instagram"></a>
+      <div class="uni__media"><video data-src="video/sesion.mp4" poster="img/poster-sesion.webp" muted playsinline loop preload="none"></video></div>
+      <div class="uni__body">
+        <span class="uni__kind">Fiestas · Lounge</span>
+        <h3>Sesión Chicago</h3>
+        <p>“Pocas fechas, más exclusividad.” Noches con artistas como Ronny GTA, El Jincho, Chimbala o DJ Patio.</p>
+        <span class="uni__event" data-event="Sesión Chicago"></span>
+        <span class="uni__handle"><svg><use href="#ig"/></svg>@sesionchicago</span>
+      </div>
+    </article>
+
+    <article class="uni__card uni__card--rancho" data-cursor="Instagram">
+      <a class="uni__link" href="https://instagram.com/ranchocaballitomendez" target="_blank" rel="noopener" aria-label="Rancho Caballito Méndez en Instagram"></a>
+      <div class="uni__media uni__media--stack">
+        <img src="img/rancho-1.webp" alt="Paseo a caballo en el rancho" loading="lazy">
+        <img src="img/rancho-4.webp" alt="Cumpleaños del caballo del rancho" loading="lazy">
+        <img src="img/rancho-6.webp" alt="Cabalgata nocturna" loading="lazy">
+      </div>
+      <div class="uni__body">
+        <span class="uni__kind">Rancho familiar · 🇩🇴</span>
+        <h3>Rancho Caballito Méndez</h3>
+        <p>San Cristóbal, República Dominicana. Eventos, cabalgatas y tradición criolla.</p>
+        <span class="uni__event" data-event="Rancho Caballito Méndez"></span>
+        <span class="uni__handle"><svg><use href="#ig"/></svg>@ranchocaballitomendez</span>
+      </div>
+    </article>
+
+    <article class="uni__card uni__card--recap" data-cursor="Instagram">
+      <a class="uni__link" href="https://instagram.com/recapfilmms" target="_blank" rel="noopener" aria-label="Recap Films en Instagram"></a>
+      <div class="uni__media"><img src="img/recap-1.webp" alt="Equipo de grabación de Recap Films" loading="lazy"></div>
+      <div class="uni__body">
+        <span class="uni__kind">Productora · Nuevo proyecto</span>
+        <h3>Recap Films</h3>
+        <p>Creando recap de momentos. Lifestyle &amp; filmmaking con el ojo de la casa.</p>
+        <span class="uni__badge">Próximamente</span>
+        <span class="uni__handle"><svg><use href="#ig"/></svg>@recapfilmms</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__col">
+      <h4>Vilanova</h4>
+      <p>La Chicago<br>Carrer de Joan Maragall, 27<br>08800 Vilanova i la Geltrú</p>
+      <p><a href="tel:+34931971532">931 97 15 32</a></p>
+      <p><a href="https://instagram.com/chicago_vilanova" target="_blank" rel="noopener">@chicago_vilanova</a></p>
+    </div>
+    <div class="footer__col">
+      <h4>Sitges</h4>
+      <p>La Chicago 2.0<br>Carrer de Sant Josep, 36<br>08870 Sitges</p>
+      <p><a href="https://instagram.com/chicago_sitges" target="_blank" rel="noopener">@chicago_sitges</a></p>
+    </div>
+    <div class="footer__col">
+      <h4>Horario</h4>
+      <p>Lunes a sábado<br>10:00 – 20:00</p>
+      <p>Domingo cerrado</p>
+      <p>Servicio a domicilio bajo cita</p>
+    </div>
+    <div class="footer__col">
+      <h4>Universo Chicago</h4>
+      <p><a href="https://instagram.com/sesionchicago" target="_blank" rel="noopener">Sesión Chicago</a><br>
+      <a href="https://instagram.com/ranchocaballitomendez" target="_blank" rel="noopener">Rancho Caballito Méndez</a><br>
+      <a href="https://instagram.com/recapfilmms" target="_blank" rel="noopener">Recap Films</a></p>
+      <button class="btn btn--blue btn--sm" data-book>Reservar cita</button>
+    </div>
+  </div>
+  <div class="footer__word" aria-hidden="true"><span class="split-chars">LA CHICAGO</span></div>
+  <div class="footer__bottom">
+    <span>© <span id="year">2026</span> La Chicago · Vilanova &amp; Sitges</span>
+    <span>Fundada por <a href="https://instagram.com/charlsalbert_" target="_blank" rel="noopener">Charls Albert</a></span>
+  </div>
+</footer>
+
+<!-- Botón móvil fijo -->
+<button class="mbook" data-book><span>Reservar cita</span><svg><use href="#arrow"/></svg></button>
+
+<!-- ============ RESERVAS (overlay) ============ -->
+<div class="book" id="book" role="dialog" aria-modal="true" aria-labelledby="bookTitle" aria-hidden="true">
+  <div class="book__backdrop" data-close></div>
+  <div class="book__panel">
+    <header class="book__head">
+      <div>
+        <p class="book__kicker" id="bookKicker">Reserva online</p>
+        <h2 class="book__title" id="bookTitle">Elige tu casa</h2>
+      </div>
+      <button class="book__close" data-close aria-label="Cerrar reserva">✕</button>
+    </header>
+    <ol class="book__steps" id="bookSteps"></ol>
+    <div class="book__body" id="bookBody"></div>
+    <footer class="book__foot" id="bookFoot">
+      <button class="btn btn--line btn--sm" id="bookBack">← Atrás</button>
+      <div class="book__sum" id="bookSum"></div>
+      <button class="btn btn--blue" id="bookNext" disabled>Continuar</button>
+    </footer>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
+<script src="booking.js" defer></script>
+<script src="main.js" defer></script>
+</body>
+</html>

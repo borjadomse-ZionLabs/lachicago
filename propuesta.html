@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Propuesta Universo Chicago</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="icon" href="favicon-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---- propuesta ---- */
+.p-wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--pad); }
+.p-nav { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px var(--pad); background: rgba(10,11,15,.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+.p-nav .nav__logo img { width: 40px; height: auto; }
+.p-nav__meta { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.p-hero { position: relative; min-height: 88svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; padding: 120px 0 56px; }
+.p-hero__bg { position: absolute; inset: 0; }
+.p-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.p-hero__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,11,15,.55), rgba(10,11,15,.2) 35%, rgba(10,11,15,.95) 88%); }
+.p-hero .p-wrap { position: relative; width: 100%; }
+.p-hero h1 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; line-height: .84; margin: 0 0 22px; font-size: clamp(64px, 13vw, 210px); }
+.p-hero h1 span { display: block; color: var(--blue-2); font-size: .42em; letter-spacing: .01em; }
+.p-hero p { margin: 0; font-size: clamp(18px, 1.8vw, 26px); max-width: 34ch; color: rgba(255,255,255,.88); }
+.p-hero p em { font-size: 1.1em; }
+.p-hero__row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.22); padding-top: 22px; margin-top: 26px; }
+.p-chip { display: inline-flex; gap: 8px; align-items: center; font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 9px 14px; border-radius: 99px; background: var(--blue); }
+
+.p-sec { padding: clamp(80px, 11vw, 150px) 0; }
+.p-sec--paper { background: var(--paper); color: var(--ink); }
+.p-sec--blue { background: var(--blue); }
+.p-h2 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(48px, 8vw, 128px); line-height: .88; margin: 0 0 22px; }
+.p-lead { font-size: clamp(17px, 1.5vw, 21px); max-width: 52ch; margin: 0 0 clamp(36px, 5vw, 64px); color: rgba(255,255,255,.78); }
+.p-sec--paper .p-lead { color: rgba(10,11,15,.7); }
+.p-sec--paper .label { color: rgba(10,11,15,.55); }
+.p-sec--paper .label span { color: var(--blue); }
+
+/* fugas */
+.fugas { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.fuga { border: 1px solid var(--line); border-radius: 18px; padding: 24px; background: var(--ink-2); display: flex; flex-direction: column; gap: 10px; }
+.fuga b { font-family: var(--f-display); font-weight: 400; font-size: 30px; text-transform: uppercase; line-height: 1; }
+.fuga span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ff7a7a; }
+.fuga p { margin: 0; color: rgba(255,255,255,.75); font-size: 15px; }
+
+/* demo card */
+.demo { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; }
+.demo__img { border-radius: 22px; overflow: hidden; min-height: 420px; position: relative; }
+.demo__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.demo__body { border-radius: 22px; background: var(--ink-2); border: 1px solid var(--line); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 18px; }
+.demo__body ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.demo__body li { display: flex; gap: 12px; align-items: baseline; font-size: 16px; color: rgba(255,255,255,.85); }
+.demo__body li::before { content: "✦"; color: var(--blue-2); font-size: 12px; }
+.demo__btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+
+/* tabla de valor */
+.vt { width: 100%; border-collapse: collapse; font-size: 15px; }
+.vt th { text-align: left; font-family: var(--f-mono); font-weight: 500; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(10,11,15,.55); padding: 0 12px 14px 0; border-bottom: 1px solid var(--ink); }
+.vt td { padding: 20px 12px 20px 0; border-bottom: 1px solid var(--line-d); vertical-align: top; }
+.vt td:first-child { font-family: var(--f-mono); font-size: 12px; color: rgba(10,11,15,.45); width: 40px; }
+.vt td b { display: block; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.vt td small { color: rgba(10,11,15,.65); font-size: 14px; display: block; max-width: 60ch; }
+.vt .h, .vt .e { text-align: right; white-space: nowrap; font-family: var(--f-mono); }
+.vt .e { font-family: var(--f-display); font-size: 26px; padding-right: 0; }
+.vt tfoot td { border-bottom: 0; padding-top: 26px; }
+.vt tfoot .e { font-size: 44px; }
+.vt tfoot b { font-size: 20px; }
+.vt-note { margin-top: 16px; font-size: 13px; color: rgba(10,11,15,.55); }
+
+/* comparativa */
+.cmp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: clamp(50px, 7vw, 90px); }
+.cmp__c { border-radius: 20px; padding: 28px; border: 1px solid var(--line-d); background: #fff; display: flex; flex-direction: column; gap: 12px; }
+.cmp__c small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(10,11,15,.5); }
+.cmp__c b { font-family: var(--f-display); font-weight: 400; font-size: clamp(34px, 3.6vw, 52px); line-height: 1; }
+.cmp__c p { margin: 0; font-size: 14px; color: rgba(10,11,15,.7); }
+.cmp__c--me { background: var(--ink); color: #fff; border-color: var(--ink); position: relative; }
+.cmp__c--me small { color: var(--blue-2); }
+.cmp__c--me p { color: rgba(255,255,255,.75); }
+.cmp__c--me s { font-family: var(--f-mono); font-size: 14px; color: rgba(255,255,255,.5); }
+.cmp__tag { position: absolute; top: -12px; right: 20px; background: var(--blue); color: #fff; font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; border-radius: 99px; }
+
+/* roi */
+.roi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.35); }
+.roi div { padding: 28px 24px 10px 0; }
+.roi div + div { padding-left: 24px; border-left: 1px solid rgba(255,255,255,.35); }
+.roi b { display: block; font-family: var(--f-display); font-weight: 400; font-size: clamp(54px, 7vw, 110px); line-height: .9; }
+.roi span { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.8); }
+.roi-note { margin: 26px 0 0; font-size: 14px; color: rgba(255,255,255,.75); max-width: 70ch; }
+.wins { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 50px; }
+.wins div { background: rgba(10,11,15,.2); border: 1px solid rgba(255,255,255,.25); border-radius: 18px; padding: 22px; }
+.wins b { display: block; font-size: 18px; margin-bottom: 6px; }
+.wins p { margin: 0; font-size: 14px; color: rgba(255,255,255,.82); }
+
+/* universo */
+.u-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.u { border-radius: 22px; overflow: hidden; background: var(--ink-2); border: 1px solid var(--line); display: flex; flex-direction: column; }
+.u__img { aspect-ratio: 16/10; position: relative; overflow: hidden; }
+.u__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.u:hover .u__img img { transform: scale(1.04); }
+.u__b { padding: 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.u__k { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-2); }
+.u h3 { margin: 0; font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(36px, 3.6vw, 56px); line-height: 1; }
+.u ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.u li { font-size: 15px; color: rgba(255,255,255,.82); display: flex; gap: 10px; align-items: baseline; }
+.u li::before { content: "✦"; color: var(--blue-2); font-size: 11px; }
+.u__price { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; border-top: 1px solid var(--line); padding-top: 18px; }
+.u__price s { font-family: var(--f-mono); font-size: 13px; color: var(--muted); display: block; }
+.u__price b { font-family: var(--f-display); font-weight: 400; font-size: 44px; line-height: 1; }
+.u__price .gift { font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; background: #fff; color: var(--ink); padding: 8px 12px; border-radius: 99px; }
+
+/* pack */
+.pack { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; align-items: stretch; }
+.pack__list { border-radius: 22px; background: #fff; border: 1px solid var(--line-d); padding: clamp(22px, 3vw, 36px); }
+.pack__row { display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line-d); font-size: 16px; }
+.pack__row span:last-child { font-family: var(--f-mono); white-space: nowrap; }
+.pack__row--t { border-bottom: 0; font-weight: 700; }
+.pack__row--v span:last-child { text-decoration: line-through; color: rgba(10,11,15,.45); }
+.pack__offer { border-radius: 22px; background: var(--ink); color: #fff; padding: clamp(26px, 3.4vw, 44px); display: flex; flex-direction: column; justify-content: space-between; gap: 22px; position: relative; overflow: hidden; }
+.pack__offer::before { content: ""; position: absolute; right: -60px; top: -60px; width: 260px; height: 260px; background: url(img/logo-bull.png) center/contain no-repeat; opacity: .08; }
+.pack__offer small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-2); }
+.pack__offer b { display: block; font-family: var(--f-display); font-weight: 400; font-size: clamp(72px, 9vw, 140px); line-height: .85; }
+.pack__offer p { margin: 0; color: rgba(255,255,255,.78); font-size: 15px; }
+.pack__save { display: inline-flex; align-self: flex-start; background: var(--blue); padding: 8px 14px; border-radius: 99px; font-weight: 700; font-size: 14px; }
+
+/* mantenimiento */
+.mt { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.mt__c { border-radius: 22px; border: 1px solid var(--line); background: var(--ink-2); padding: clamp(24px, 3vw, 38px); display: flex; flex-direction: column; gap: 16px; }
+.mt__c--hi { border-color: var(--blue-2); background: linear-gradient(180deg, rgba(31,75,255,.18), var(--ink-2)); }
+.mt__c small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-2); }
+.mt__c b { font-family: var(--f-display); font-weight: 400; font-size: clamp(54px, 6vw, 84px); line-height: .9; }
+.mt__c b em { font-family: var(--f-mono); font-style: normal; font-size: 14px; color: var(--muted); margin-left: 6px; }
+.mt__c ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.mt__c li { font-size: 15px; color: rgba(255,255,255,.82); display: flex; gap: 10px; }
+.mt__c li::before { content: "✓"; color: var(--blue-2); }
+
+/* timeline */
+.tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink); }
+.tl div { padding: 24px 20px 0 0; }
+.tl div + div { padding-left: 20px; border-left: 1px solid var(--line-d); }
+.tl small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.tl b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 32px; text-transform: uppercase; line-height: 1; margin: 10px 0; }
+.tl p { margin: 0; font-size: 14px; color: rgba(10,11,15,.7); }
+.pay { margin-top: 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pay div { border-radius: 18px; background: #fff; border: 1px solid var(--line-d); padding: 22px; }
+.pay b { font-family: var(--f-display); font-weight: 400; font-size: 46px; line-height: 1; display: block; }
+.pay p { margin: 6px 0 0; font-size: 14px; color: rgba(10,11,15,.7); }
+
+.p-end { text-align: center; padding: clamp(100px, 13vw, 180px) var(--pad); position: relative; overflow: hidden; }
+.p-end img.bull { width: clamp(120px, 14vw, 200px); margin: 0 auto 30px; }
+.p-end h2 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(64px, 12vw, 200px); line-height: .85; margin: 0 0 24px; }
+.p-end p { color: rgba(255,255,255,.75); max-width: 46ch; margin: 0 auto 34px; font-size: 18px; }
+.p-end__btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.p-foot { padding: 24px var(--pad); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+
+.rv { opacity: 0; transform: translateY(26px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+html:not(.js) .rv { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .demo, .pack, .mt, .u-grid { grid-template-columns: 1fr; }
+  .demo__img { min-height: 300px; }
+  .cmp { grid-template-columns: 1fr; }
+  .roi { grid-template-columns: 1fr; }
+  .roi div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.35); }
+  .tl { grid-template-columns: 1fr 1fr; }
+  .tl div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .pay { grid-template-columns: 1fr; }
+  .p-nav__meta { display: none; }
+}
+@media (max-width: 640px) {
+  .vt thead { display: none; }
+  .vt tr { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 18px 0; border-bottom: 1px solid var(--line-d); }
+  .vt td { border: 0; padding: 0; }
+  .vt td:first-child { display: none; }
+  .vt .h { grid-column: 1; grid-row: 2; text-align: left; font-size: 12px; color: rgba(10,11,15,.5); }
+  .vt .e { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 24px; }
+  .vt tfoot tr { border-bottom: 0; }
+  .vt tfoot .e { font-size: 36px; }
+  .tl { grid-template-columns: 1fr; }
+  .tl div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-d); }
+  .tl div { padding-bottom: 20px; }
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header class="p-nav">
+  <a href="index.html" class="nav__logo"><img src="img/logo-bull-sm.png" alt="" width="40" height="35"><span>LA CHICAGO</span></a>
+  <span class="p-nav__meta">Propuesta privada · Noviembre 2026</span>
+  <a href="index.html" class="btn btn--blue btn--sm">Ver la web</a>
+</header>
+
+<!-- HERO -->
+<section class="p-hero">
+  <div class="p-hero__bg"><img src="img/charls-1.webp" alt=""></div>
+  <div class="p-wrap">
+    <span class="p-chip">Preparada para Charls Albert</span>
+    <h1 style="margin-top:22px"><span>Propuesta</span>Universo Chicago</h1>
+    <div class="p-hero__row">
+      <p>Cuatro negocios. Una sola marca. <em>Todos al nivel de La Chicago.</em></p>
+      <span class="p-chip" style="background:transparent;border:1px solid rgba(255,255,255,.35)">Válida 7 días</span>
+    </div>
+  </div>
+</section>
+
+<!-- FUGAS -->
+<section class="p-sec">
+  <div class="p-wrap">
+    <p class="label"><span>(01)</span> Dónde estás hoy</p>
+    <h2 class="p-h2 rv">Tu marca es top.<br>Tu presencia online, no.</h2>
+    <p class="p-lead rv">En Instagram el universo Chicago es enorme. Pero cuando alguien te busca en Google, quiere reservar a las once de la noche o quiere saber cuándo es la próxima fiesta, no encuentra nada tuyo.</p>
+    <div class="fugas">
+      <div class="fuga rv"><span>4 de 4</span><b>Ningún negocio tiene web</b><p>La Chicago, Sesión Chicago, el Rancho y Recap Films dependen 100% de Instagram y de terceros.</p></div>
+      <div class="fuga rv"><span>Vilanova</span><b>Citas por teléfono y DM</b><p>Si nadie coge el teléfono o contesta el WhatsApp a tiempo, ese cliente reserva en otra barbería.</p></div>
+      <div class="fuga rv"><span>Sitges</span><b>Tu agenda en Booksy</b><p>La relación con tu cliente pasa por una plataforma ajena, con sus cuotas y sus reglas.</p></div>
+      <div class="fuga rv"><span>Sesión Chicago</span><b>Fiestas solo por stories</b><p>Cada fecha se vende en 24 horas de stories y no te quedas con la lista de tu gente para la siguiente.</p></div>
+      <div class="fuga rv"><span>Rancho</span><b>Invisible para turistas</b><p>Quien busca cabalgatas o eventos en San Cristóbal no te encuentra si no te sigue ya.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LA DEMO -->
+<section class="p-sec" style="padding-top:0">
+  <div class="p-wrap">
+    <p class="label"><span>(02)</span> Lo que ya has visto</p>
+    <h2 class="p-h2 rv">La Chicago<br>ya está hecha.</h2>
+    <div class="demo rv">
+      <div class="demo__img"><img src="img/vng-facade.webp" alt="Fachada de La Chicago en Vilanova"></div>
+      <div class="demo__body">
+        <p class="label" style="margin:0"><span>✦</span> lachicago.netlify.app</p>
+        <ul>
+          <li>Vídeo a pantalla completa montado con tus propios reels</li>
+          <li>Las dos casas, Vilanova y Sitges, en una sola marca</li>
+          <li>Muro de artistas: Dalvin, Chimbala, Amenazzy, Paramba…</li>
+          <li>Carta de servicios con precios y fotos del trabajo</li>
+          <li>Reservas online propias, 24/7, para las dos sedes</li>
+          <li>Panel para ver la agenda de las dos sedes desde el móvil</li>
+          <li>Tu sección de fundador y el universo Chicago</li>
+        </ul>
+        <div class="demo__btns">
+          <a class="btn btn--blue" href="index.html">Abrir la web</a>
+          <a class="btn btn--line" href="panel.html">Ver el panel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALOR -->
+<section class="p-sec p-sec--paper">
+  <div class="p-wrap">
+    <p class="label"><span>(03)</span> Lo que cuesta de verdad</p>
+    <h2 class="p-h2 rv">Qué hay detrás<br>de esta web.</h2>
+    <p class="p-lead rv">No es una plantilla. Es diseño, vídeo, desarrollo y un sistema de reservas hecho a medida. Así se presupuesta en un estudio de diseño serio, partida por partida:</p>
+    <table class="vt rv" id="valueTable">
+      <thead><tr><th></th><th>Partida</th><th class="h">Horas</th><th class="e" style="font-family:var(--f-mono);font-size:11px">Valor</th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr><td></td><td><b>Valor de mercado de La Chicago</b><small>Tarifa de referencia: <span id="rate"></span> €/hora de estudio senior</small></td><td class="h" id="hTot"></td><td class="e" id="eTot"></td></tr></tfoot>
+    </table>
+
+    <div class="cmp">
+      <div class="cmp__c rv"><small>Plantilla tipo Wix</small><b>500–1.500 €</b><p>Diseño genérico, sin vídeo propio, reservas con apps de terceros y sin panel. Se parece a la de cualquiera.</p></div>
+      <div class="cmp__c rv"><small>Agencia de diseño</small><b>10.000–20.000 €</b><p>Nivel parecido a este, pero con 2 o 3 meses de reuniones antes de ver nada.</p></div>
+      <div class="cmp__c cmp__c--me rv"><span class="cmp__tag">Ya hecha</span><small>Tu precio · La Chicago</small><s id="cmpValue"></s><b id="cmpPrice"></b><p>La has visto funcionando antes de pagar un euro. La ponemos en marcha en días, no en meses.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="p-sec p-sec--blue">
+  <div class="p-wrap">
+    <p class="label" style="color:rgba(255,255,255,.75)"><span style="color:#fff">(04)</span> Lo que te devuelve</p>
+    <h2 class="p-h2 rv">Se paga sola.</h2>
+    <div class="roi rv">
+      <div><b>+2</b><span>citas al día entre las dos sedes</span></div>
+      <div><b id="roiMes"></b><span>al mes (a 20 € la cita, 24 días)</span></div>
+      <div><b id="roiMeses"></b><span>para recuperar la inversión</span></div>
+    </div>
+    <p class="roi-note">Ejemplo orientativo con números conservadores: solo dos clientes más al día que hoy no llegan a reservar. Cada cita extra a partir de ahí es margen.</p>
+    <div class="wins">
+      <div class="rv"><b>Reservas mientras duermes</b><p>El cliente reserva a las 23:00 desde el sofá, sin llamar y sin esperar respuesta.</p></div>
+      <div class="rv"><b>Tus clientes son tuyos</b><p>Nombres y teléfonos en tu agenda, no en la de una plataforma.</p></div>
+      <div class="rv"><b>Google te encuentra</b><p>"Barbería en Vilanova" o "trenzas en Sitges", y sales tú con tu web.</p></div>
+      <div class="rv"><b>Imagen de alta gama</b><p>La web está a la altura de los artistas que se sientan en tu silla.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIVERSO -->
+<section class="p-sec">
+  <div class="p-wrap">
+    <p class="label"><span>(05)</span> El siguiente paso</p>
+    <h2 class="p-h2 rv">Todo tu universo,<br>al mismo nivel.</h2>
+    <p class="p-lead rv">La misma calidad que has visto en La Chicago, aplicada a cada uno de tus negocios. Cada web con su personalidad y todas conectadas bajo tu nombre.</p>
+    <div class="u-grid" id="uGrid"></div>
+  </div>
+</section>
+
+<!-- PACK -->
+<section class="p-sec p-sec--paper">
+  <div class="p-wrap">
+    <p class="label"><span>(06)</span> Pack Universo Chicago</p>
+    <h2 class="p-h2 rv">Las cinco webs,<br>un solo precio.</h2>
+    <div class="pack rv">
+      <div class="pack__list" id="packList"></div>
+      <div class="pack__offer">
+        <div>
+          <small>Precio pack · las 5 webs</small>
+          <b id="packPrice"></b>
+        </div>
+        <span class="pack__save" id="packSave"></span>
+        <p>Incluye la web personal de Charls Albert de regalo, que une todos tus negocios en un solo enlace para tu bio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANTENIMIENTO -->
+<section class="p-sec">
+  <div class="p-wrap">
+    <p class="label"><span>(07)</span> Después del lanzamiento</p>
+    <h2 class="p-h2 rv">Tú a lo tuyo.<br>Nosotros a la web.</h2>
+    <div class="mt">
+      <div class="mt__c rv">
+        <small>Por web</small>
+        <b><span id="mtOne"></span><em>/ mes</em></b>
+        <ul><li>Hosting rápido y certificado de seguridad</li><li>Copias de seguridad</li><li>Cambios de precios, fotos y fechas</li><li>Soporte directo por WhatsApp</li></ul>
+      </div>
+      <div class="mt__c mt__c--hi rv">
+        <small>Todo el universo</small>
+        <b><span id="mtAll"></span><em>/ mes</em></b>
+        <ul><li>Todo lo anterior para las 5 webs</li><li>Nuevas fechas de Sesión Chicago en 24 h</li><li>Contenido nuevo con tus reels cada mes</li><li>Informe mensual de reservas y visitas</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="p-sec p-sec--paper">
+  <div class="p-wrap">
+    <p class="label"><span>(08)</span> Cómo arrancamos</p>
+    <h2 class="p-h2 rv">De hoy<br>a funcionando.</h2>
+    <div class="tl rv">
+      <div><small>Semana 1</small><b>La Chicago</b><p>Tu dominio, tus precios y tu equipo. Reservas conectadas a tu Google Calendar. Online.</p></div>
+      <div><small>Semana 2</small><b>Sesión Chicago</b><p>Próximas fechas, reservados VIP y la lista de tu gente.</p></div>
+      <div><small>Semana 3</small><b>Rancho</b><p>Web en español e inglés con reservas de cabalgatas y eventos.</p></div>
+      <div><small>Semana 4</small><b>Recap + Charls</b><p>Portfolio de Recap Films y tu web personal que lo une todo.</p></div>
+    </div>
+    <div class="pay">
+      <div class="rv"><b>40%</b><p>Al empezar. Ese mismo día La Chicago pasa a ser tuya.</p></div>
+      <div class="rv"><b>30%</b><p>Al entregar La Chicago y Sesión Chicago.</p></div>
+      <div class="rv"><b>30%</b><p>Al lanzar el universo completo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="p-end">
+  <img class="bull" src="img/logo-bull.png" alt="">
+  <h2 class="rv">¿Empezamos?</h2>
+  <p class="rv">La Chicago ya está hecha. Solo falta ponerla a funcionar y llevar el resto de tu universo al mismo nivel.</p>
+  <div class="p-end__btns rv">
+    <a class="btn btn--blue btn--lg" href="index.html">Ver La Chicago otra vez</a>
+  </div>
+</section>
+<footer class="p-foot"><span>Propuesta privada para Charls Albert</span><span>Válida 7 días · precios sin IVA</span></footer>
+
+<script>
+/* ===== PRECIOS (editar aquí) ===== */
+const P = {
+  tarifa: 65,
+  partidas: [
+    ['Estrategia, dirección de arte y textos', 'Estudio de tu marca, estructura de la web y textos con tu forma de hablar ("Llega con estilo, sale con respeto").', 30],
+    ['Diseño a medida, escritorio y móvil', 'Diez secciones diseñadas desde cero, sin plantilla. Tipografía, color y logo de La Chicago.', 40],
+    ['Producción audiovisual', 'Selección de tus reels, montaje del vídeo principal, siete cortes optimizados para móvil y tratamiento de más de 70 fotos.', 20],
+    ['Desarrollo con animaciones premium', 'Pantalla de entrada, scroll horizontal de artistas, vídeos que se activan al pasar, parallax. Rápida en el móvil.', 50],
+    ['Sistema de reservas propio, 2 sedes', 'Sede, servicio, profesional, día y hora. Horarios por sede, festivos, antelación mínima y ticket con "añadir al calendario".', 35],
+    ['Panel de gestión del dueño', 'Agenda del día de Vilanova y Sitges, ingresos previstos, ocupación y reservas web en tiempo real.', 25],
+    ['Conexión con Google Calendar', 'Cada reserva entra sola en el calendario de su sede y bloquea el hueco. Sin dobles reservas.', 10],
+    ['SEO local y rendimiento', 'Para salir en Google en Vilanova y Sitges: metadatos, ficha de Google, velocidad y vista previa al compartir por WhatsApp.', 12]
+  ],
+  precioChicago: 4900,
+  universo: [
+    { n: 'Sesión Chicago', k: 'Fiestas · Lounge', img: 'sesion-lounge', valor: 7500, precio: 3900, li: ['Próximas fechas con cuenta atrás y cartel de artistas', 'Reserva de mesas y reservados VIP', 'Lista de asistentes propia para avisar de la siguiente fecha', 'Aftermovie de cada noche'] },
+    { n: 'Rancho Caballito Méndez', k: 'San Cristóbal · RD', img: 'rancho-1', valor: 6000, precio: 2900, li: ['Web en español e inglés para turistas', 'Reservas de cabalgatas y paseos', 'Eventos privados: cumpleaños y despedidas', 'Galería, ubicación y WhatsApp directo'] },
+    { n: 'Recap Films', k: 'Productora audiovisual', img: 'recap-1', valor: 4000, precio: 1900, li: ['Portfolio de vídeo a pantalla completa', 'Paquetes: eventos, lifestyle y marcas', 'Formulario de presupuesto', 'Reels integrados desde Instagram'] },
+    { n: 'Charls Albert', k: 'Web personal · Hub', img: 'charls-4', valor: 1500, precio: 0, li: ['Tu marca personal como fundador', 'Un solo enlace para tu bio que conecta todo', 'Tus negocios, tu historia y tus redes', 'Formulario para colaboraciones y prensa'] }
+  ],
+  precioPack: 9900,
+  mantenimientoWeb: 49,
+  mantenimientoTodo: 149,
+  roiCitasDia: 2, roiPrecioCita: 20, roiDias: 24
+};
+/* ================================== */
+const $ = s => document.querySelector(s);
+const eur = n => n.toLocaleString('es-ES', { useGrouping: 'always' }) + ' €';
+let hT = 0, eT = 0;
+$('#valueTable tbody').innerHTML = P.partidas.map(([t, d, h], i) => { hT += h; eT += h * P.tarifa; return `<tr><td>${String(i + 1).padStart(2, '0')}</td><td><b>${t}</b><small>${d}</small></td><td class="h">${h} h</td><td class="e">${eur(h * P.tarifa)}</td></tr>`; }).join('');
+$('#rate').textContent = P.tarifa; $('#hTot').textContent = hT + ' h'; $('#eTot').textContent = eur(eT);
+$('#cmpValue').textContent = 'Valor ' + eur(eT); $('#cmpPrice').textContent = eur(P.precioChicago);
+const mes = P.roiCitasDia * P.roiPrecioCita * P.roiDias;
+$('#roiMes').textContent = eur(mes); $('#roiMeses').textContent = '~' + Math.round(P.precioChicago / mes) + ' meses';
+$('#uGrid').innerHTML = P.universo.map(u => `<article class="u rv"><div class="u__img"><img src="img/${u.img}.webp" alt="${u.n}" loading="lazy"></div><div class="u__b"><span class="u__k">${u.k}</span><h3>${u.n}</h3><ul>${u.li.map(l => `<li>${l}</li>`).join('')}</ul><div class="u__price"><div><s>Valor ${eur(u.valor)}</s>${u.precio ? `<b>${eur(u.precio)}</b>` : '<b>0 €</b>'}</div>${u.precio ? '' : '<span class="gift">Regalo con el pack</span>'}</div></div></article>`).join('');
+const items = [['La Chicago · Vilanova + Sitges', P.precioChicago, eT], ...P.universo.map(u => [u.n, u.precio, u.valor])];
+const sumPrecio = items.reduce((a, i) => a + i[1], 0), sumValor = items.reduce((a, i) => a + i[2], 0);
+$('#packList').innerHTML = items.map(([n, p]) => `<div class="pack__row"><span>${n}</span><span>${p ? eur(p) : 'Regalo'}</span></div>`).join('') +
+  `<div class="pack__row pack__row--v"><span>Valor de mercado total</span><span>${eur(sumValor)}</span></div><div class="pack__row pack__row--t"><span>Por separado</span><span>${eur(sumPrecio)}</span></div>`;
+$('#packPrice').textContent = eur(P.precioPack);
+$('#packSave').textContent = `Ahorras ${eur(sumPrecio - P.precioPack)} frente a contratarlas por separado`;
+$('#mtOne').textContent = P.mantenimientoWeb + ' €'; $('#mtAll').textContent = P.mantenimientoTodo + ' €';
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

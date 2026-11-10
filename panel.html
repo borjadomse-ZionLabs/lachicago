@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panel La Chicago</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="icon" href="favicon-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0b0f;--ink-2:#13151b;--ink-3:#1d2029;--line:rgba(255,255,255,.1);--muted:#8a8f9c;--blue:#1f4bff;--blue-2:#3b63ff;--green:#3ddc84;--amber:#ffc93c;--f-d:"Anton",Impact,sans-serif;--f-b:"Inter Tight",system-ui,sans-serif;--f-m:"JetBrains Mono",monospace;--pad:clamp(16px,2.4vw,32px)}
+*{box-sizing:border-box}body{margin:0;background:var(--ink);color:#fff;font-family:var(--f-b);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#nl-badge-frame{display:none!important}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px var(--pad);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,11,15,.85);backdrop-filter:blur(14px);z-index:5;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-d);font-size:22px;letter-spacing:.04em}
+.brand svg{width:34px;color:var(--blue-2)}
+.brand small{font-family:var(--f-m);font-size:11px;letter-spacing:.12em;color:var(--muted);margin-left:6px}
+.demo{font-family:var(--f-m);font-size:10px;letter-spacing:.12em;background:var(--amber);color:var(--ink);padding:4px 8px;border-radius:99px}
+.seg{display:flex;background:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:4px}
+.seg button{height:34px;padding:0 16px;border-radius:99px;font-size:13px;font-weight:600;color:var(--muted)}
+.seg button.on{background:#fff;color:var(--ink)}
+.datenav{display:flex;align-items:center;gap:8px}
+.datenav button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line)}
+.datenav .today{width:auto;padding:0 14px;border-radius:99px;font-size:13px}
+.datenav strong{font-size:15px;min-width:190px;text-align:center}
+.back{font-size:13px;color:var(--muted)}
+.wrap{padding:var(--pad);display:grid;grid-template-columns:1fr 340px;gap:20px}
+.kpis{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:20px}
+.kpi span{font-family:var(--f-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kpi b{display:block;font-family:var(--f-d);font-weight:400;font-size:46px;line-height:1;margin:10px 0 6px}
+.kpi small{font-size:12px;color:var(--green)}
+.kpi--blue{background:var(--blue);border-color:var(--blue)}.kpi--blue span,.kpi--blue small{color:rgba(255,255,255,.85)}
+.card{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.card h3{margin:0;padding:16px 18px;font-size:13px;font-family:var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.agenda{display:grid;grid-template-columns:56px repeat(var(--cols),1fr);position:relative}
+.agenda .colh{position:sticky;top:0;padding:12px;font-weight:700;border-bottom:1px solid var(--line);border-left:1px solid var(--line);background:var(--ink-2);z-index:2;display:flex;justify-content:space-between;align-items:center}
+.agenda .colh small{font-family:var(--f-m);font-size:11px;color:var(--muted);font-weight:400}
+.hours{grid-column:1;position:relative}
+.hours div{height:80px;font-family:var(--f-m);font-size:11px;color:var(--muted);padding:4px 8px;border-top:1px solid var(--line)}
+.col{position:relative;border-left:1px solid var(--line);background:repeating-linear-gradient(180deg,var(--line) 0 1px,transparent 1px 80px)}
+.ev{position:absolute;left:6px;right:6px;border-radius:10px;padding:7px 10px;font-size:12px;line-height:1.25;overflow:hidden;background:var(--ink-3);border-left:3px solid var(--blue-2);transition:transform .2s}
+.ev:hover{transform:scale(1.02);z-index:3}
+.ev b{display:block;font-size:13px}
+.ev span{color:var(--muted)}
+.ev.web{background:rgba(31,75,255,.22);border-left-color:#fff}
+.ev.web::after{content:"WEB";position:absolute;right:8px;top:7px;font-family:var(--f-m);font-size:9px;background:#fff;color:var(--ink);padding:2px 5px;border-radius:4px}
+.ev.blk{background:repeating-linear-gradient(45deg,#1a1c24 0 6px,#16181f 6px 12px);border-left-color:var(--muted)}
+.now{position:absolute;left:56px;right:0;height:2px;background:#ff4d4d;z-index:4}
+.now::before{content:"";position:absolute;left:-5px;top:-4px;width:10px;height:10px;border-radius:50%;background:#ff4d4d}
+.side{display:flex;flex-direction:column;gap:20px}
+.list{list-style:none;margin:0;padding:6px 0;max-height:420px;overflow:auto}
+.list li{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:10px 18px}
+.list li+li{border-top:1px solid var(--line)}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--ink-3);font-family:var(--f-d);font-size:18px}
+.list b{display:block;font-size:14px}.list span{font-size:12px;color:var(--muted)}
+.tag{font-family:var(--f-m);font-size:10px;padding:4px 8px;border-radius:99px;background:var(--ink-3);white-space:nowrap}
+.tag.v{background:rgba(31,75,255,.25)}.tag.s{background:rgba(61,220,132,.18)}
+.bars{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.bar{font-size:13px}.bar div{display:flex;justify-content:space-between;margin-bottom:6px}.bar i{display:block;height:6px;border-radius:6px;background:var(--blue-2)}
+.empty{padding:22px 18px;color:var(--muted);font-size:13px}
+.empty a{color:#fff;text-decoration:underline}
+.role{font-family:var(--f-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.role b{color:#fff;font-weight:500}
+.role button{height:32px;padding:0 12px;border-radius:99px;border:1px solid var(--line);font-family:var(--f-b);font-size:12px;text-transform:none;letter-spacing:0;color:#fff}
+.role button:hover{background:#fff;color:var(--ink)}
+body.locked .top>*:not(.brand),body.locked .wrap{display:none}
+.login{position:fixed;inset:0;z-index:20;display:none;place-items:center;padding:20px;background:radial-gradient(120% 80% at 50% 0%,rgba(31,75,255,.25),transparent 60%),var(--ink)}
+body.locked .login{display:grid}
+.login__box{width:min(400px,100%);background:var(--ink-2);border:1px solid var(--line);border-radius:22px;padding:32px 28px;text-align:center}
+.login__box img{width:84px;margin:0 auto 14px;display:block}
+.login__box h1{font-family:var(--f-d);font-weight:400;font-size:38px;margin:0 0 6px;letter-spacing:.02em}
+.login__box p{margin:0 0 22px;color:var(--muted);font-size:14px}
+.pin{display:flex;gap:10px;justify-content:center;margin-bottom:18px}
+.pin input{width:56px;height:64px;border-radius:14px;border:1px solid var(--line);background:var(--ink);color:#fff;font-family:var(--f-d);font-size:30px;text-align:center}
+.pin input:focus{outline:none;border-color:var(--blue-2)}
+.login__err{color:#ff7a7a;font-size:13px;min-height:18px;margin-bottom:8px}
+.login__btn{width:100%;height:52px;border-radius:99px;background:var(--blue);font-weight:700;font-size:15px}
+.login__btn:hover{background:var(--blue-2)}
+.login__note{margin-top:18px;font-size:12px;color:var(--muted);line-height:1.5}
+.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+@media(max-width:1000px){.wrap{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.kpi b{font-size:36px}.datenav strong{min-width:0;font-size:13px}.agenda .colh small{display:none}.brand small{display:none}}
+</style>
+</head>
+<body class="locked">
+<div class="login" id="login">
+  <form class="login__box" id="loginForm" autocomplete="off">
+    <img src="img/logo-bull.png" alt="">
+    <h1>ACCESO EQUIPO</h1>
+    <p>Introduce tu código personal</p>
+    <div class="pin" id="pin">
+      <input inputmode="numeric" aria-label="Dígito 1"><input inputmode="numeric" aria-label="Dígito 2"><input inputmode="numeric" aria-label="Dígito 3"><input inputmode="numeric" aria-label="Dígito 4">
+    </div>
+    <div class="login__err" id="loginErr"></div>
+    <button class="login__btn" type="submit">Entrar</button>
+    <p class="login__note">Cada persona del equipo tiene su código.<br>El dueño ve todo; el encargado, su sede; el trabajador, solo su agenda.</p>
+  </form>
+</div>
+<header class="top">
+  <div class="brand"><img src="img/logo-bull-sm.png" alt="" style="width:38px;height:auto">LA CHICAGO<small>PANEL</small><span class="demo">DEMO</span></div>
+  <div class="seg" id="seg"><button data-s="all" class="on">Todas</button><button data-s="vilanova">Vilanova</button><button data-s="sitges">Sitges</button></div>
+  <div class="datenav"><button id="prev" aria-label="Día anterior">‹</button><button class="today" id="today">Hoy</button><strong id="dlabel"></strong><button id="nextd" aria-label="Día siguiente">›</button></div>
+  <div class="role"><span id="roleTxt"></span><button id="logout">Salir</button></div>
+</header>
+
+<main class="wrap">
+  <section class="kpis" id="kpis"></section>
+  <section class="card">
+    <h3><span>Agenda del día</span><span id="agCount"></span></h3>
+    <div style="max-height:calc(100vh - 290px);min-height:480px;overflow:auto;position:relative" id="agScroll"><div class="agenda" id="agenda"></div></div>
+  </section>
+  <aside class="side">
+    <section class="card"><h3><span>Reservas desde la web</span><span id="webCount"></span></h3><ul class="list" id="webList"></ul></section>
+    <section class="card"><h3><span>Lo más pedido · semana</span></h3><div class="bars" id="bars"></div></section>
+  </aside>
+</main>
+
+<script src="config.js"></script>
+<script>
+(() => {
+  const S = window.SITE, $ = s => document.querySelector(s);
+  const pad = n => String(n).padStart(2, '0'), ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const toM = s => { const [a,b] = s.split(':').map(Number); return a*60+b; }, toH = m => `${pad(Math.floor(m/60))}:${pad(m%60)}`;
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  let sedeF = 'all', day = new Date(); day.setHours(12,0,0,0);
+
+  /* ---- ACCESO POR ROLES ----
+     DEMO: los códigos están aquí para enseñar el funcionamiento.
+     En la versión real el código se comprueba en el servidor (Google Apps Script)
+     y la agenda solo se envía a quien tenga un código válido. */
+  const USERS = {
+    '1111': { rol: 'dueno', nombre: 'Charls Albert', sede: 'all' },
+    '2222': { rol: 'encargado', nombre: '', sede: 'vilanova' },
+    '3333': { rol: 'encargado', nombre: '', sede: 'sitges' },
+    '4444': { rol: 'trabajador', nombre: 'José Ángel', sede: 'sitges' }
+  };
+  const ROL_TXT = { dueno: 'Dueño', encargado: 'Encargado', trabajador: 'Trabajador' };
+  let U = null;
+  const money = () => U && U.rol !== 'trabajador';
+  function login(u) {
+    U = u; try { sessionStorage.setItem('chicago_panel', JSON.stringify(u)); } catch {}
+    sedeF = u.sede;
+    $('#seg').style.display = u.rol === 'dueno' ? '' : 'none';
+    [...$('#seg').children].forEach(x => x.classList.toggle('on', x.dataset.s === 'all'));
+    $('#roleTxt').innerHTML = `${ROL_TXT[u.rol]}${u.nombre ? ' · <b>' + esc(u.nombre) + '</b>' : ''}${u.sede !== 'all' ? ' · ' + S.sedes[u.sede].corto : ''}`;
+    document.body.classList.remove('locked');
+    render();
+  }
+  const pins = [...document.querySelectorAll('#pin input')];
+  pins.forEach((inp, i) => {
+    inp.addEventListener('input', () => {
+      const d = inp.value.replace(/\D/g, ''); inp.value = '';
+      [...d].slice(0, pins.length - i).forEach((c, k) => { pins[i + k].value = c; });
+      const nx = pins.find(p => !p.value); if (nx) nx.focus();
+      if (pins.every(p => p.value)) $('#loginForm').requestSubmit();
+    });
+    inp.addEventListener('keydown', e => { if (e.key === 'Backspace' && !inp.value && pins[i - 1]) pins[i - 1].focus(); });
+  });
+  $('#loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const code = pins.map(p => p.value).join(''), u = USERS[code];
+    if (u) { $('#loginErr').textContent = ''; pins.forEach(p => p.value = ''); login(u); return; }
+    $('#loginErr').textContent = 'Código incorrecto';
+    const box = $('.login__box'); box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+    pins.forEach(p => p.value = ''); pins[0].focus();
+  });
+  $('#logout').onclick = () => { U = null; try { sessionStorage.removeItem('chicago_panel'); } catch {} document.body.classList.add('locked'); pins[0].focus(); };
+  const START = 10*60, END = 20*60, PX = 80/60;
+
+  const store = () => { try { return JSON.parse(localStorage.getItem('chicago_reservas') || '[]'); } catch { return []; } };
+  const nombres = ['Marc','Yeray','Kevin','Laura','Iker','Andrea','Pol','Dylan','Nerea','Óscar','Erick','Daniel','Joel','Aitana','Brayan','Sergi','Wilson','Carla','Adrián','Héctor','Jordi','Lucía','Samuel','Miguel'];
+  function seeded(str){ let h=2166136261; for (const c of str){ h^=c.charCodeAt(0); h=Math.imul(h,16777619);} return ()=>{ h^=h<<13; h^=h>>>17; h^=h<<5; return ((h>>>0)%1000)/1000; }; }
+  function demo(sede, date) {
+    const d = new Date(date+'T12:00:00'); if (!(S.sedes[sede].horario[d.getDay()]||[]).length) return [];
+    const r = seeded(sede+date+'p'), out = [];
+    const W = sede === 'sitges' ? { corte:4, corteBarba:3, caballero:2, barba:1, infantil:1, balayage:1, color:1, trenzas:1, corteMujer:2, keratina:1 } : { corte:5, corteBarba:4, caballero:2, corteBarbaCejas:2, barba:1, infantil:1, trenzas:1, facial:1 };
+    const pool = Object.entries(W).flatMap(([id,n]) => Array(n).fill(S.servicios.find(s => s.id === id)));
+    const PR = { balayage:95, color:60, trenzas:70, corteMujer:30, keratina:80 };
+    let m = START;
+    while (m < END - 30) {
+      if (r() < .62) {
+        const s = pool[Math.floor(r()*pool.length)], len = Math.max(30, Math.min(s.min, 150));
+        if (m + len > END) break;
+        out.push({ sede, fecha: date, hora: toH(m), duracion: len, servicio: s.nombre, precio: s.precio ?? PR[s.id] ?? 40, nombre: nombres[Math.floor(r()*nombres.length)], demo: true });
+        m += len;
+      } else m += 30;
+      if (m === 14*60 && r() < .5) { out.push({ sede, fecha: date, hora: '14:00', duracion: 30, servicio: 'Descanso', blk: true }); m += 30; }
+    }
+    return out;
+  }
+  const sedes = () => sedeF === 'all' ? ['vilanova','sitges'] : [sedeF];
+  const eventsFor = (sede, date) => [...demo(sede, date), ...store().filter(x => x.sede === sede && x.fecha === date).map(x => ({...x, web: true}))];
+
+  function render() {
+    if (!U) return;
+    const date = ymd(day), today = ymd(new Date());
+    const dl = day.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long' }); $('#dlabel').textContent = dl.charAt(0).toUpperCase() + dl.slice(1);
+    const ss = sedes(), all = ss.flatMap(s => eventsFor(s, date)).filter(e => !e.blk);
+    const ingresos = all.reduce((a,e) => a + (Number(e.precio)||0), 0);
+    const cap = ss.reduce((a,s) => a + ((S.sedes[s].horario[day.getDay()]||[]).length ? (END-START) : 0), 0);
+    const occ = cap ? Math.round(all.reduce((a,e)=>a+e.duracion,0) / cap * 100) : 0;
+    const web = store().filter(x => ss.includes(x.sede));
+    $('#kpis').innerHTML = `
+      <div class="kpi kpi--blue"><span>Citas del día</span><b>${all.length}</b><small>${ss.length===2?'Vilanova + Sitges':S.sedes[ss[0]].corto}</small></div>
+      ${money() ? `<div class="kpi"><span>Ingresos previstos</span><b>${ingresos.toLocaleString('es-ES')} €</b><small>▲ sin comisiones de terceros</small></div>`
+        : `<div class="kpi"><span>Próxima cita</span><b>${(all.filter(e => date !== today || toM(e.hora) >= new Date().getHours()*60+new Date().getMinutes()).sort((a,b)=>toM(a.hora)-toM(b.hora))[0]||{}).hora || '—'}</b><small>Tu agenda de hoy</small></div>`}
+      <div class="kpi"><span>Ocupación</span><b>${Math.min(occ,100)}%</b><small>${occ>70?'▲ día fuerte':'Huecos libres para la web'}</small></div>
+      <div class="kpi"><span>Reservas web</span><b>${web.length}</b><small>Entran solas, 24/7</small></div>`;
+    $('#agCount').textContent = `${all.length} citas`;
+
+    const ag = $('#agenda'); ag.style.setProperty('--cols', ss.length);
+    let html = `<div></div>` + ss.map(s => `<div class="colh">${S.sedes[s].corto}<small>${S.sedes[s].direccion}</small></div>`).join('');
+    html += `<div class="hours">${Array.from({length:(END-START)/60},(_,i)=>`<div>${toH(START+i*60)}</div>`).join('')}</div>`;
+    ss.forEach(s => {
+      const evs = eventsFor(s, date);
+      html += `<div class="col" style="height:${(END-START)*PX}px">${evs.map(e => {
+        const top = (toM(e.hora)-START)*PX, h = Math.max(e.duracion*PX - 4, 24);
+        if (e.blk) return `<div class="ev blk" style="top:${top}px;height:${h}px"><span>Descanso</span></div>`;
+        return `<div class="ev ${e.web?'web':''}" style="top:${top}px;height:${h}px"><b>${esc(e.nombre)}</b><span>${e.hora} · ${esc(e.servicio)}${money() && e.precio!=null?' · '+e.precio+'€':''}</span></div>`;
+      }).join('')}</div>`;
+    });
+    ag.innerHTML = html;
+    $('#agScroll').querySelectorAll('.now').forEach(n => n.remove());
+    if (date === today) {
+      const n = new Date(), m = n.getHours()*60+n.getMinutes();
+      if (m > START && m < END) { const l = document.createElement('div'); l.className='now'; l.style.top = (44 + (m-START)*PX) + 'px'; ag.appendChild(l); }
+    }
+
+    $('#webCount').textContent = web.length;
+    $('#webList').innerHTML = web.length ? web.slice().reverse().map(x => `<li><span class="av">${esc(x.nombre[0]||'?')}</span><div><b>${esc(x.nombre)}</b><span>${esc(x.servicio)} · ${new Date(x.fecha+'T12:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'short'})} ${x.hora}</span></div><span class="tag ${x.sede[0]}">${S.sedes[x.sede].corto}</span></li>`).join('')
+      : `<li class="empty" style="display:block">Aún no hay reservas web en este navegador. <a href="index.html#reservar">Haz una reserva de prueba</a> y aparecerá aquí al instante.</li>`;
+
+    const cnt = {};
+    for (let i = 0; i < 7; i++) { const d = new Date(day); d.setDate(d.getDate()-i); ss.forEach(s => eventsFor(s, ymd(d)).forEach(e => { if (!e.blk) cnt[e.servicio] = (cnt[e.servicio]||0)+1; })); }
+    const top = Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,6), mx = top[0]?.[1]||1;
+    $('#bars').innerHTML = top.map(([n,c]) => `<div class="bar"><div><span>${esc(n)}</span><span>${c}</span></div><i style="width:${c/mx*100}%"></i></div>`).join('');
+  }
+  $('#seg').onclick = e => { const b = e.target.closest('button'); if (!b) return; sedeF = b.dataset.s; [...$('#seg').children].forEach(x => x.classList.toggle('on', x===b)); render(); };
+  $('#prev').onclick = () => { day.setDate(day.getDate()-1); render(); };
+  $('#nextd').onclick = () => { day.setDate(day.getDate()+1); render(); };
+  $('#today').onclick = () => { day = new Date(); day.setHours(12,0,0,0); render(); };
+  addEventListener('storage', render);
+  try { const saved = JSON.parse(sessionStorage.getItem('chicago_panel') || 'null'); if (saved) login(saved); else pins[0].focus(); } catch { pins[0].focus(); }
+})();
+</script>
+</body>
+</html>
