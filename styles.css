@@ -213,11 +213,13 @@ html:not(.js) .loader { display: none; }
 .art--photo { aspect-ratio: 1; }
 .art--poster { aspect-ratio: 9/16; }
 .art--shot { aspect-ratio: 3/4; container-type: inline-size; }
-.art--shot img { object-position: 50% 30%; }
+.art--shot img { object-position: 50% var(--pos, 30%); }
 .art--shot::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(10,11,15,0) 38%, rgba(10,11,15,.55) 78%, rgba(10,11,15,.85)); }
-.art__stamp { position: absolute; left: 6%; right: 6%; bottom: 74px; z-index: 2; text-align: center; pointer-events: none; }
-.art__stamp strong { display: block; font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: calc(var(--fs, 1) * 23cqi); line-height: .86; letter-spacing: -.005em; color: #2f63ff; -webkit-text-stroke: 1px rgba(255,255,255,.22); text-shadow: 0 6px 24px rgba(0,0,0,.55); white-space: nowrap; }
-.art__stamp em { display: block; font-family: var(--f-serif); font-style: italic; font-size: 12cqi; line-height: 1; color: #fff; margin-top: -.28em; padding-right: 8%; text-align: right; transform: rotate(-6deg); text-shadow: 0 3px 14px rgba(0,0,0,.6); }
+.art__stamp { position: absolute; left: 5%; right: 5%; bottom: var(--sb, 78px); z-index: 2; text-align: center; pointer-events: none; }
+.art__stamp strong { display: block; font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: calc(var(--fs, 1) * 23cqi); line-height: .86; letter-spacing: -.005em; color: #2457ff; text-shadow: 0 6px 22px rgba(0,0,0,.45); white-space: nowrap; }
+.art__word { position: relative; display: inline-block; }
+.art__stamp em { position: absolute; right: -3%; bottom: -.12em; font-family: 'Allura', cursive; font-style: normal; font-size: calc(var(--fs, 1) * 13cqi); line-height: 1; color: var(--sig, #ff3a4c); transform: rotate(-7deg); transform-origin: right bottom; white-space: nowrap; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+.art__stamp--y em { --sig: #ffd23f; }
 .art--shot figcaption { z-index: 3; }
 .art--video { aspect-ratio: 3/4; display: grid; }
 .art--video video { grid-area: 1/1; }
@@ -554,7 +556,7 @@ html.anim .fade-up { opacity: 0; transform: translateY(30px); }
   .art--photo { width: 74vw; }
   .art--poster { width: 56vw; }
   .art--shot { width: 70vw; }
-  .art__stamp { bottom: 64px; }
+  .art__stamp { --sb: 66px; }
   .art--video { width: 76vw; }
   .artistas__names { font-size: 22vw; padding-top: 12px; }
 
