@@ -77,28 +77,44 @@
   /* ---------- servicios ---------- */
   (function servicios() {
     const tabs = $('#svcTabs'), list = $('#svcList'), hover = $('#svcHover'), himg = $('img', hover);
-    let cat = S.categorias[0].id;
-    const fmt = s => s.precio == null ? '<span class="svc__price is-ask">Consultar</span>' : `<span class="svc__price">${s.desde ? '<small>desde</small>' : ''}${s.precio}€</span>`;
+    let cat = S.categorias[0].id, expanded = false;
+    const MOBILE_MAX = 5;
+    const fmt = s => {
+      if (s.soloWhatsapp) return '<span class="svc__price is-ask is-wa">Por WhatsApp</span>';
+      if (s.precio == null) return '<span class="svc__price is-ask">Consultar</span>';
+      const ps = s.precioSede ? Object.entries(s.precioSede) : [];
+      const otro = ps.find(([, p]) => p !== s.precio);
+      return `<span class="svc__price">${s.desde ? '<small>desde</small>' : ''}${s.precio}€${otro ? `<em class="svc__alt">${S.sedes[otro[0]].corto} ${otro[1]}€</em>` : ''}</span>`;
+    };
     const sedesTxt = s => s.sedes.length === 2 ? 'Vilanova · Sitges' : (s.sedes[0] === 'sitges' ? 'Solo Sitges' : 'Solo Vilanova');
+    const goSvc = id => {
+      const s = S.servicios.find(x => x.id === id);
+      if (s && s.soloWhatsapp) { window.open(S.whatsapp, '_blank', 'noopener'); return; }
+      window.ChicagoBook?.open({ servicio: id });
+    };
     function render() {
       tabs.innerHTML = S.categorias.map(c => `<button class="tab" role="tab" aria-selected="${c.id === cat}" data-cat="${c.id}">${c.nombre}</button>`).join('');
       const items = S.servicios.filter(s => s.cat === cat);
+      const limit = isMobile() && !expanded && items.length > MOBILE_MAX + 1;
       list.innerHTML = items.map((s, i) => `
-        <li class="svc" data-svc="${s.id}" data-img="img/${s.img}.webp" tabindex="0" role="button" aria-label="Reservar ${s.nombre}">
+        <li class="svc${limit && i >= MOBILE_MAX ? ' is-more' : ''}" data-svc="${s.id}" data-img="img/${s.img}.webp" tabindex="0" role="button" aria-label="${s.soloWhatsapp ? 'Consultar por WhatsApp' : 'Reservar'} ${s.nombre}">
           <span class="svc__i">${String(i + 1).padStart(2, '0')}</span>
           <span class="svc__name">${s.nombre}${s.top ? '<span class="svc__top">Top</span>' : ''}</span>
           <p class="svc__desc">${s.desc}</p>
           <span class="svc__meta"><span>${s.min >= 60 ? (s.min / 60).toFixed(s.min % 60 ? 1 : 0).replace('.', ',') + ' h' : s.min + ' min'}</span><span>${sedesTxt(s)}</span></span>
           ${fmt(s)}
           <span class="svc__go"><svg><use href="#arrow"/></svg></span>
-        </li>`).join('');
-      if (hasGsap && !reduce) gsap.from($$('.svc', list), { y: 30, opacity: 0, duration: .8, stagger: .05, ease: 'expo.out' });
-      // precargar imágenes de hover
-      items.forEach(s => { const im = new Image(); im.src = `img/${s.img}.webp`; });
+        </li>`).join('') + (limit ? `<li class="svc-more"><button type="button" id="svcMore">Ver toda la carta (${items.length})</button></li>` : '');
+      if (hasGsap && !reduce) gsap.from($$('.svc:not(.is-more)', list), { y: 30, opacity: 0, duration: .8, stagger: .05, ease: 'expo.out' });
+      // precargar imágenes de hover (solo escritorio)
+      if (fine) items.forEach(s => { const im = new Image(); im.src = `img/${s.img}.webp`; });
     }
-    tabs.addEventListener('click', e => { const b = e.target.closest('.tab'); if (!b) return; cat = b.dataset.cat; render(); });
-    list.addEventListener('click', e => { const r = e.target.closest('.svc'); if (r) window.ChicagoBook?.open({ servicio: r.dataset.svc }); });
-    list.addEventListener('keydown', e => { if (e.key === 'Enter') { const r = e.target.closest('.svc'); if (r) window.ChicagoBook?.open({ servicio: r.dataset.svc }); } });
+    tabs.addEventListener('click', e => { const b = e.target.closest('.tab'); if (!b) return; cat = b.dataset.cat; expanded = false; render(); });
+    list.addEventListener('click', e => {
+      if (e.target.closest('#svcMore')) { expanded = true; render(); window.ScrollTrigger?.refresh(); return; }
+      const r = e.target.closest('.svc'); if (r) goSvc(r.dataset.svc);
+    });
+    list.addEventListener('keydown', e => { if (e.key === 'Enter') { const r = e.target.closest('.svc'); if (r) goSvc(r.dataset.svc); } });
     if (fine) {
       let x = 0, y = 0, cx = 0, cy = 0, raf;
       const loop = () => { cx += (x - cx) * .14; cy += (y - cy) * .14; hover.style.left = cx + 'px'; hover.style.top = cy + 'px'; raf = requestAnimationFrame(loop); };

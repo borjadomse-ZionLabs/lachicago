@@ -187,7 +187,7 @@ body.locked .login{display:grid}
       if (r() < .62) {
         const s = pool[Math.floor(r()*pool.length)], len = Math.max(30, Math.min(s.min, 150));
         if (m + len > END) break;
-        out.push({ sede, fecha: date, hora: toH(m), duracion: len, servicio: s.nombre, precio: s.precio ?? PR[s.id] ?? 40, nombre: nombres[Math.floor(r()*nombres.length)], demo: true });
+        out.push({ sede, fecha: date, hora: toH(m), duracion: len, servicio: s.nombre, precio: (s.precioSede && s.precioSede[sede]) ?? s.precio ?? PR[s.id] ?? 40, nombre: nombres[Math.floor(r()*nombres.length)], demo: true });
         m += len;
       } else m += 30;
       if (m === 14*60 && r() < .5) { out.push({ sede, fecha: date, hora: '14:00', duracion: 30, servicio: 'Descanso', blk: true }); m += 30; }

@@ -84,7 +84,8 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="hero__media">
-    <video class="hero__video" id="heroVideo" src="video/hero.mp4" poster="img/poster-hero.webp" muted playsinline loop autoplay preload="auto"></video>
+    <video class="hero__video" id="heroVideo" muted playsinline loop autoplay preload="auto"></video>
+    <script>(function(){var v=document.getElementById('heroVideo'),m=matchMedia('(max-width: 760px) and (orientation: portrait)').matches;v.poster=m?'img/poster-hero-m.webp':'img/poster-hero.webp';v.src=m?'video/hero-m.mp4':'video/hero.mp4';})();</script>
     <div class="hero__shade"></div>
   </div>
 
@@ -155,6 +156,7 @@
         <div class="casa__ctas">
           <button class="btn btn--blue" data-book="vilanova">Reservar en Vilanova</button>
           <a class="btn btn--line" href="https://www.google.com/maps/place/Chicago+Barber+Shop/@41.2197687,1.723365,17z/data=!4m6!3m5!1s0x12a386fae7b99ffd:0x5dd889b69cb3510f!8m2!3d41.2197687!4d1.723365" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn btn--line btn--icon" href="https://instagram.com/chicago_vilanova" target="_blank" rel="noopener" aria-label="Instagram de La Chicago Vilanova"><svg><use href="#ig"/></svg></a>
         </div>
       </div>
     </article>
@@ -171,11 +173,12 @@
         <ul class="casa__tags"><li>Peluquería mujer</li><li>Balayage</li><li>Keratina</li><li>Trenzas</li><li>Novias</li></ul>
         <div class="casa__info">
           <p>Carrer de Sant Josep, 36<br>08870 Sitges</p>
-          <p><span class="rating"><svg><use href="#star"/></svg> 4,9 · 118 reseñas</span><br>Lun–Sáb · 10:00–20:00</p>
+          <p><a href="tel:+34932662125">932 66 21 25</a> · <span class="rating"><svg><use href="#star"/></svg> 4,9</span><br>Lun–Sáb · 10:00–20:00</p>
         </div>
         <div class="casa__ctas">
           <button class="btn btn--blue" data-book="sitges">Reservar en Sitges</button>
           <a class="btn btn--line" href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Sant+Josep+36+08870+Sitges" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn btn--line btn--icon" href="https://instagram.com/chicago_sitges" target="_blank" rel="noopener" aria-label="Instagram de La Chicago 2.0 Sitges"><svg><use href="#ig"/></svg></a>
         </div>
       </div>
     </article>
@@ -219,32 +222,6 @@
   <div class="servicios__cta fade-up">
     <p>¿Lo tienes claro? <em>Tu silla te espera.</em></p>
     <button class="btn btn--blue btn--lg magnetic" data-book>Reservar ahora <svg><use href="#arrow"/></svg></button>
-  </div>
-</section>
-
-<!-- ============ EL TRABAJO / GALERIA ============ -->
-<section class="trabajo" id="trabajo">
-  <div class="section-head">
-    <p class="label"><span>(05)</span> El trabajo</p>
-    <h2 class="h-display split-lines">Hecho a cuchilla.</h2>
-  </div>
-  <div class="trabajo__grid">
-    <figure class="g g1" data-speed="-0.06"><img src="img/fade-4.webp" alt="Skin fade perfilado a cuchilla" loading="lazy"></figure>
-    <figure class="g g2" data-speed="0.08"><img src="img/braids-1.webp" alt="Trenzas en proceso" loading="lazy"></figure>
-    <figure class="g g3 g--video" data-speed="-0.03"><video data-src="video/trenzas.mp4" poster="img/poster-trenzas.webp" muted playsinline loop preload="none"></video><figcaption>Trenzas · La Chicago 2.0</figcaption></figure>
-    <figure class="g g4" data-speed="0.1"><img src="img/curly.webp" alt="Corte rizado con fade" loading="lazy"></figure>
-    <figure class="g g5" data-speed="-0.08"><img src="img/braids-6.webp" alt="Trenzista de La Chicago trabajando con un cliente" loading="lazy"></figure>
-    <figure class="g g6 g--video" data-speed="0.05"><video data-src="video/balayage.mp4" poster="img/poster-balayage.webp" muted playsinline loop preload="none"></video><figcaption>Balayage · Sitges</figcaption></figure>
-    <figure class="g g7" data-speed="-0.05"><img src="img/braids-2.webp" alt="Resultado de trenzas frente al logo de La Chicago 2.0" loading="lazy"></figure>
-    <figure class="g g8" data-speed="0.07"><img src="img/fade-3.webp" alt="Fade con diseño de línea" loading="lazy"></figure>
-    <figure class="g g9" data-speed="-0.04"><img src="img/vng-back.webp" alt="Barbero de La Chicago con camiseta del equipo" loading="lazy"></figure>
-    <figure class="g g10" data-speed="0.06"><img src="img/stg-flowers.webp" alt="Secado con brushing junto al muro de flores en Sitges" loading="lazy"></figure>
-  </div>
-  <div class="marquee marquee--outline" aria-hidden="true">
-    <div class="marquee__track marquee__track--slow">
-      <span>Skin fade</span><i>✦</i><span>Box braids</span><i>✦</i><span>Cornrows</span><i>✦</i><span>Balayage</span><i>✦</i><span>Keratina</span><i>✦</i><span>Barba a cuchilla</span><i>✦</i>
-      <span>Skin fade</span><i>✦</i><span>Box braids</span><i>✦</i><span>Cornrows</span><i>✦</i><span>Balayage</span><i>✦</i><span>Keratina</span><i>✦</i><span>Barba a cuchilla</span><i>✦</i>
-    </div>
   </div>
 </section>
 
@@ -358,6 +335,7 @@
     <div class="footer__col">
       <h4>Sitges</h4>
       <p>La Chicago 2.0<br>Carrer de Sant Josep, 36<br>08870 Sitges</p>
+      <p><a href="tel:+34932662125">932 66 21 25</a></p>
       <p><a href="https://instagram.com/chicago_sitges" target="_blank" rel="noopener">@chicago_sitges</a></p>
     </div>
     <div class="footer__col">
@@ -380,6 +358,9 @@
     <span>Fundada por <a href="https://instagram.com/charlsalbert_" target="_blank" rel="noopener">Charls Albert</a></span>
   </div>
 </footer>
+
+<!-- WhatsApp flotante -->
+<a class="wa-float" id="waFloat" href="https://wa.me/message/HS3FELGO2NCOP1" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3Zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.9-3.9-1.9-6.1C4.9 9.8 9.9 4.9 16 4.9s11.1 4.9 11.1 10.9S22.1 26.4 16 26.4Zm6.1-8.1c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.5c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.6-.4Z"/></svg><span>WhatsApp</span></a>
 
 <!-- Botón móvil fijo -->
 <button class="mbook" data-book><span>Reservar cita</span><svg><use href="#arrow"/></svg></button>

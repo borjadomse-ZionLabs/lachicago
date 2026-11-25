@@ -4,6 +4,7 @@
    ========================================================================== */
 window.SITE = {
   marca: "La Chicago",
+  whatsapp: "https://wa.me/message/HS3FELGO2NCOP1",   // botón flotante y consultas (trenzas)
   fundador: "Charls Albert",
   instagramFundador: "charlsalbert_",
 
@@ -34,8 +35,8 @@ window.SITE = {
       lema: "Barbería unisex · Trenzas · Peluquería",
       direccion: "Carrer de Sant Josep, 36",
       cp: "08870 Sitges",
-      telefono: "",                  // ⚠️ añadir teléfono de Sitges si lo tiene
-      telefonoTxt: "",
+      telefono: "932662125",
+      telefonoTxt: "932 66 21 25",
       whatsappLink: "https://wa.me/message/HS3FELGO2NCOP1",
       instagram: "chicago_sitges",
       mapsUrl: "https://www.google.com/maps/search/?api=1&query=Carrer+de+Sant+Josep+36+08870+Sitges",
@@ -59,7 +60,7 @@ window.SITE = {
     { id: "trenzas", nombre: "Trenzas & extras" }
   ],
   servicios: [
-    { id: "corte", nombre: "Corte de cabello", desc: "Corte y peinado con producto de primera calidad.", precio: 18, desde: true, min: 40, cat: "barberia", sedes: ["vilanova", "sitges"], img: "fade-2", top: true },
+    { id: "corte", nombre: "Corte de cabello", desc: "Corte y peinado con producto de primera calidad.", precio: 15, precioSede: { vilanova: 15, sitges: 18 }, min: 40, cat: "barberia", sedes: ["vilanova", "sitges"], img: "fade-2", top: true },
     { id: "corteBarba", nombre: "Corte + barba", desc: "El ritual completo: corte, perfilado y barba a cuchilla.", precio: 25, desde: true, min: 50, cat: "barberia", sedes: ["vilanova", "sitges"], img: "fade-4", top: true },
     { id: "corteBarbaCejas", nombre: "Corte + barba + cejas", desc: "Todo incluido, detalle a cuchilla.", precio: 25, min: 50, cat: "barberia", sedes: ["vilanova", "sitges"], img: "fade-3" },
     { id: "caballero", nombre: "Corte caballero signature", desc: "Corte con extra: diseño, textura o acabado especial.", precio: 20, min: 30, cat: "barberia", sedes: ["vilanova", "sitges"], img: "curly" },
@@ -77,7 +78,7 @@ window.SITE = {
     { id: "boda", nombre: "Peinados de boda", desc: "Para el día que no se repite. Prueba incluida.", precio: null, min: 90, cat: "pelu", sedes: ["sitges"], img: "stg-flowers-2" },
     { id: "depilacion", nombre: "Depilación facial", desc: "Hilo y cera, rápido y preciso.", precio: null, min: 15, cat: "pelu", sedes: ["sitges"], img: "look-energy" },
 
-    { id: "trenzas", nombre: "Trenzas", desc: "Box braids, cornrows y diseños a medida.", precio: null, min: 120, cat: "trenzas", sedes: ["vilanova", "sitges"], img: "braids-1", top: true },
+    { id: "trenzas", nombre: "Trenzas", desc: "Box braids, cornrows y diseños a medida. Se consultan por WhatsApp.", soloWhatsapp: true, precio: null, min: 120, cat: "trenzas", sedes: ["vilanova", "sitges"], img: "braids-1", top: true },
     { id: "extra", nombre: "Extra · diseño", desc: "Líneas, dibujos y detalles a cuchilla.", precio: 5, min: 10, cat: "trenzas", sedes: ["vilanova", "sitges"], img: "fade-3" },
     { id: "domicilio", nombre: "Servicio a domicilio", desc: "La Chicago va a ti: casa, hotel o backstage.", precio: null, min: 60, cat: "trenzas", sedes: ["vilanova", "sitges"], img: "dalvin-1" }
   ],

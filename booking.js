@@ -24,7 +24,10 @@
   const toM = s => { const [a, b] = s.split(':').map(Number); return a * 60 + b; };
   const toHHMM = m => `${pad(Math.floor(m / 60))}:${pad(m % 60)}`;
   const nowMadrid = () => new Date(new Date().toLocaleString('en-US', { timeZone: TZ }));
-  const price = s => s.precio == null ? 'Consultar' : `${s.desde ? 'desde ' : ''}${s.precio} €`;
+  // precio según la sede elegida (ej. corte: 15 € Vilanova / 18 € Sitges)
+  const precioDe = (s, sedeId = B.sede) => (s.precioSede && sedeId && s.precioSede[sedeId] != null) ? s.precioSede[sedeId] : s.precio;
+  const price = s => precioDe(s) == null ? 'Consultar' : `${s.desde ? 'desde ' : ''}${precioDe(s)} €`;
+  const openWhatsapp = () => window.open(S.whatsapp || sede()?.whatsappLink, '_blank', 'noopener');
   const dur = m => m >= 60 ? `${(m / 60).toFixed(m % 60 ? 1 : 0).replace('.', ',')} h` : `${m} min`;
   const fechaLarga = d => new Date(d + 'T12:00:00').toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
   const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
@@ -32,6 +35,8 @@
 
   /* ---------- abrir / cerrar ---------- */
   function open(opts = {}) {
+    const pre = opts.servicio && S.servicios.find(x => x.id === opts.servicio);
+    if (pre && pre.soloWhatsapp) { openWhatsapp(); return; }
     lastFocus = document.activeElement;
     Object.assign(B, { sede: null, svc: null, pro: null, date: null, time: null });
     if (opts.sede && S.sedes[opts.sede]) B.sede = opts.sede;
@@ -122,13 +127,15 @@
     w.innerHTML = S.categorias.map(c => {
       const items = list.filter(s => s.cat === c.id); if (!items.length) return '';
       return `<p class="bk-cat">${c.nombre}</p><div class="bk-svcs">${items.map(s => `
-        <button class="bk-svc ${B.svc === s.id ? 'is-sel' : ''}" data-id="${s.id}">
-          <b>${s.nombre}</b><span class="p ${s.precio == null ? 'ask' : ''}">${s.precio == null ? 'Consultar' : (s.desde ? '<small style="font-family:var(--f-mono);font-size:10px;color:var(--muted)">desde </small>' : '') + s.precio + '€'}</span>
-          <small>${s.desc}</small><span class="d">${dur(s.min)}</span>
+        <button class="bk-svc ${B.svc === s.id ? 'is-sel' : ''} ${s.soloWhatsapp ? 'is-wa' : ''}" data-id="${s.id}">
+          <b>${s.nombre}</b>${s.soloWhatsapp ? '<span class="p ask wa">WhatsApp →</span>' : `<span class="p ${precioDe(s) == null ? 'ask' : ''}">${precioDe(s) == null ? 'Consultar' : (s.desde ? '<small style="font-family:var(--f-mono);font-size:10px;color:var(--muted)">desde </small>' : '') + precioDe(s) + '€'}</span>`}
+          <small>${s.soloWhatsapp ? 'Se consultan por WhatsApp: precio y cita según el diseño.' : s.desc}</small><span class="d">${s.soloWhatsapp ? '' : dur(s.min)}</span>
         </button>`).join('')}</div>`;
     }).join('');
     w.addEventListener('click', e => {
       const b = e.target.closest('.bk-svc'); if (!b) return;
+      const sv = S.servicios.find(x => x.id === b.dataset.id);
+      if (sv && sv.soloWhatsapp) { openWhatsapp(); return; }
       B.svc = b.dataset.id; B.time = null;
       $$('.bk-svc', w).forEach(x => x.classList.toggle('is-sel', x === b));
       setTimeout(() => { step++; render(); }, 220);
@@ -239,7 +246,7 @@
     if (!ok) return;
     next.disabled = true; next.textContent = 'Confirmando…';
     const s = svc();
-    const rec = { id: 'LC-' + Math.random().toString(36).slice(2, 7).toUpperCase(), sede: B.sede, servicio: s.nombre, servicioId: s.id, precio: s.precio, duracion: s.min, barbero: B.pro || 'any', fecha: B.date, hora: B.time, nombre: d.nombre.trim(), telefono: d.tel.trim(), email: d.email.trim(), nota: d.nota.trim(), creada: new Date().toISOString() };
+    const rec = { id: 'LC-' + Math.random().toString(36).slice(2, 7).toUpperCase(), sede: B.sede, servicio: s.nombre, servicioId: s.id, precio: precioDe(s), duracion: s.min, barbero: B.pro || 'any', fecha: B.date, hora: B.time, nombre: d.nombre.trim(), telefono: d.tel.trim(), email: d.email.trim(), nota: d.nota.trim(), creada: new Date().toISOString() };
     const ep = sede().reservasEndpoint;
     if (ep) {
       try {
