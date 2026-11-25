@@ -212,6 +212,13 @@ html:not(.js) .loader { display: none; }
 .art { height: min(52vh, 560px); }
 .art--photo { aspect-ratio: 1; }
 .art--poster { aspect-ratio: 9/16; }
+.art--shot { aspect-ratio: 3/4; container-type: inline-size; }
+.art--shot img { object-position: 50% 30%; }
+.art--shot::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(10,11,15,0) 38%, rgba(10,11,15,.55) 78%, rgba(10,11,15,.85)); }
+.art__stamp { position: absolute; left: 6%; right: 6%; bottom: 74px; z-index: 2; text-align: center; pointer-events: none; }
+.art__stamp strong { display: block; font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: calc(var(--fs, 1) * 23cqi); line-height: .86; letter-spacing: -.005em; color: #2f63ff; -webkit-text-stroke: 1px rgba(255,255,255,.22); text-shadow: 0 6px 24px rgba(0,0,0,.55); white-space: nowrap; }
+.art__stamp em { display: block; font-family: var(--f-serif); font-style: italic; font-size: 12cqi; line-height: 1; color: #fff; margin-top: -.28em; padding-right: 8%; text-align: right; transform: rotate(-6deg); text-shadow: 0 3px 14px rgba(0,0,0,.6); }
+.art--shot figcaption { z-index: 3; }
 .art--video { aspect-ratio: 3/4; display: grid; }
 .art--video video { grid-area: 1/1; }
 .art--video blockquote { grid-area: 1/1; align-self: end; margin: 0; padding: 26px; font-family: var(--f-serif); font-style: italic; font-size: clamp(20px, 1.8vw, 28px); line-height: 1.15; color: #fff; background: linear-gradient(180deg, transparent, rgba(10,11,15,.9) 40%); }
@@ -223,7 +230,7 @@ html:not(.js) .loader { display: none; }
 .art:hover img { transform: scale(1.05); filter: none; }
 .artistas__names { margin-top: 0; padding-top: 20px; white-space: nowrap; font-family: var(--f-display); font-size: clamp(80px, 15vw, 260px); line-height: .8; color: var(--ink); letter-spacing: -.01em; opacity: .95; transform: translateY(14%); }
 .artistas__names span { display: inline-block; animation: marquee 40s linear infinite; }
-.artistas__names span::after { content: "DALVIN · CHIMBALA · AMENAZZY · PARAMBA · DJ PATIO · "; }
+.artistas__names span::after { content: "ANUEL · JC REYES · CHIMBALA · DALVIN · AMENAZZY · PARAMBA · DJ PATIO · DJ ADONIS · MESSIAH · VILLANO ANTILLANO · DONATY · "; }
 
 /* ---------- servicios ---------- */
 .servicios { background: var(--paper); color: var(--ink); padding: clamp(100px, 13vw, 190px) 0 clamp(90px, 11vw, 160px); position: relative; }
@@ -546,6 +553,8 @@ html.anim .fade-up { opacity: 0; transform: translateY(30px); }
   .art { scroll-snap-align: center; height: auto; }
   .art--photo { width: 74vw; }
   .art--poster { width: 56vw; }
+  .art--shot { width: 70vw; }
+  .art__stamp { bottom: 64px; }
   .art--video { width: 76vw; }
   .artistas__names { font-size: 22vw; padding-top: 12px; }
 
