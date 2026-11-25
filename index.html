@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/poster-hero.webp">
-<link rel="stylesheet" href="styles.css?v=20261125b">
+<link rel="stylesheet" href="styles.css?v=20261125d">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -281,7 +281,7 @@
   <div class="uni">
     <article class="uni__card uni__card--sesion" data-cursor="Instagram">
       <a class="uni__link" href="https://instagram.com/sesionchicago" target="_blank" rel="noopener" aria-label="Sesión Chicago en Instagram"></a>
-      <div class="uni__media"><video data-src="video/sesion.mp4" poster="img/poster-sesion.webp" muted playsinline loop preload="none"></video></div>
+      <div class="uni__media"><video data-src="video/sesion.mp4" data-src-m="video/sesion-m.mp4" data-poster-m="img/poster-sesion-m.webp" poster="img/poster-sesion.webp" muted playsinline loop preload="none"></video></div>
       <div class="uni__body">
         <span class="uni__kind">Fiestas · Lounge</span>
         <h3>Sesión Chicago</h3>
@@ -309,7 +309,7 @@
 
     <article class="uni__card uni__card--recap" data-cursor="Instagram">
       <a class="uni__link" href="https://instagram.com/recapfilmms" target="_blank" rel="noopener" aria-label="Recap Films en Instagram"></a>
-      <div class="uni__media"><img src="img/recap-1.webp" alt="Equipo de grabación de Recap Films" loading="lazy"></div>
+      <div class="uni__media"><picture><source media="(max-width: 900px)" srcset="img/recap-cam.webp"><img src="img/recap-cam-wide.webp" alt="Cámara con el logo de Recap Films" loading="lazy"></picture></div>
       <div class="uni__body">
         <span class="uni__kind">Productora · Nuevo proyecto</span>
         <h3>Recap Films</h3>
@@ -386,11 +386,11 @@
   </div>
 </div>
 
-<script src="config.js?v=20261125b"></script>
+<script src="config.js?v=20261125d"></script>
 <script src="vendor/gsap.min.js" defer></script>
 <script src="vendor/ScrollTrigger.min.js" defer></script>
 <script src="vendor/lenis.min.js" defer></script>
-<script src="booking.js?v=20261125b" defer></script>
-<script src="main.js?v=20261125b" defer></script>
+<script src="booking.js?v=20261125d" defer></script>
+<script src="main.js?v=20261125d" defer></script>
 </body>
 </html>

@@ -125,11 +125,13 @@
     render();
   })();
 
-  /* ---------- vídeos: reproducir solo en pantalla ---------- */
+  /* ---------- vídeos: reproducir solo en pantalla (versión vertical en móvil si existe) ---------- */
+  const portraitMobile = matchMedia('(max-width: 760px) and (orientation: portrait)').matches;
+  if (portraitMobile) $$('video[data-poster-m]').forEach(v => { v.poster = v.dataset.posterM; });
   const vio = new IntersectionObserver(es => es.forEach(en => {
     const v = en.target;
     if (en.isIntersecting) {
-      if (!v.src && v.dataset.src) v.src = v.dataset.src;
+      if (!v.src && v.dataset.src) v.src = (portraitMobile && v.dataset.srcM) ? v.dataset.srcM : v.dataset.src;
       if (v.closest('.casa') && fine) return; // casas: reproducen en hover (desktop)
       v.play().catch(() => {});
     } else v.pause();
